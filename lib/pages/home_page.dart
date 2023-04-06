@@ -13,10 +13,21 @@ class News {
       required this.publishedAt});
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+double opacityLevel = 1.0;
+ void _changeOpacity() {
+    setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
+  }
+
+  @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
@@ -24,8 +35,14 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            AnimatedOpacity(
+          opacity: opacityLevel,
+          duration: const Duration(seconds: 3),
+          child: const FlutterLogo(),
+        ),
             ElevatedButton(
               onPressed: () {
+                _changeOpacity;
                 Navigator.push(
                     context,
                     MaterialPageRoute(
