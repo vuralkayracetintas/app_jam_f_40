@@ -44,6 +44,15 @@ class HomePage extends StatelessWidget {
               child: const Text(
                 'Unity Duyuru Sayfasi',
               ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext) => NewsList()));
+              },
+              child: const Text(
+                'Akademi Genel Duyuru Sayfasi',
+              ),
             )
           ],
         ),
