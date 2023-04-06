@@ -40,7 +40,7 @@ class _NewsListState extends State<NewsList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Haberler'),
+        title: const Text('Haberler'),
       ),
       body: ListView.builder(
         itemCount: newsList.length,
@@ -67,35 +67,60 @@ class _NewsListState extends State<NewsList> {
   }
 }
 
-class NewsDetail extends StatelessWidget {
+class NewsDetail extends StatefulWidget {
   final News news;
 
   const NewsDetail({Key? key, required this.news}) : super(key: key);
 
   @override
+  State<NewsDetail> createState() => _NewsDetailState();
+}
+
+class _NewsDetailState extends State<NewsDetail> {
+  double opacityLevel = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(milliseconds: 500), () {
+      setState(() {
+        opacityLevel = 1;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(news.title),
+        title: Text(widget.news.title),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              news.title,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              news.description,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              DateFormat.yMd().add_Hms().format(news.publishedAt),
-              style: Theme.of(context).textTheme.bodySmall,
+            AnimatedOpacity(
+              opacity: opacityLevel,
+              duration: const Duration(milliseconds: 1000),
+              child: Column(
+                children: [
+                  Text(
+                    widget.news.title,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(height: 8.0),
+                  Text(
+                    widget.news.description,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  const SizedBox(height: 8.0),
+                  Text(
+                    DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
             ),
           ],
         ),
