@@ -26,11 +26,23 @@ class HomePage extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext) =>
+                            NewsList())); //todo new list change file name
+              },
+              child: const Text(
+                'Flutter Duyuru Sayfasi',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (BuildContext) => NewsList()));
               },
               child: const Text(
-                'Flutter Duyuru Sayfasi',
+                'Unity Duyuru Sayfasi',
               ),
             )
           ],
