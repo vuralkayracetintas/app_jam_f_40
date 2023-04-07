@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:jam_app/pages/home_page.dart';
+import 'package:jam_app/pages/login_page.dart';
 import 'package:lottie/lottie.dart';
 
 class SplachScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _SplachScreenState extends State<SplachScreen> {
     super.initState();
     Timer(const Duration(seconds: 5), () {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => HomePage()));
+          .pushReplacement(MaterialPageRoute(builder: (_) => LoginPage()));
     });
 
     Future.delayed(const Duration(seconds: 1), () {
