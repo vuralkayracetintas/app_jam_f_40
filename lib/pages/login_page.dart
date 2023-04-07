@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jam_app/pages/ana_sayfa.dart';
 import 'package:jam_app/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
         // Kullanıcı adı ve şifre doğruysa, bir sonraki sayfaya yönlendirin
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomePage()),
+          MaterialPageRoute(builder: (context) => Ana_sayfa()),
         );
       } else {
         // Kullanıcı adı veya şifre yanlışsa, bir hata mesajı gösterin

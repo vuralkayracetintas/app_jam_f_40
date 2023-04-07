@@ -65,6 +65,9 @@ flutter:
   assets:
     - assets/images/
     - assets/animations/
+    - assets/images/flutter.png
+    - assets/images/genel.png
+    - assets/images/unity.jpg
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
