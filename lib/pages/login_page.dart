@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jam_app/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -16,8 +17,12 @@ class _LoginPageState extends State<LoginPage> {
     final form = _formKey.currentState;
     if (form!.validate()) {
       form.save();
-      if (_username == 'example' && _password == 'password') {
+      if (_username == 'user' && _password == '1234') {
         // Kullanıcı adı ve şifre doğruysa, bir sonraki sayfaya yönlendirin
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
       } else {
         // Kullanıcı adı veya şifre yanlışsa, bir hata mesajı gösterin
         ScaffoldMessenger.of(context).showSnackBar(
