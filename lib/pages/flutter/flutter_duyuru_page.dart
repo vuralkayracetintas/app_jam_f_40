@@ -35,6 +35,7 @@ class _NewsListState extends State<NewsList> {
       publishedAt: DateTime.parse('2022-04-02 16:48:23'),
     ),
   ];
+  final List<bool> _isSelectedList = List.generate(3, (index) => false);
 
   @override
   Widget build(BuildContext context) {
@@ -42,26 +43,46 @@ class _NewsListState extends State<NewsList> {
       appBar: AppBar(
         title: const Text('Haberler'),
       ),
-      body: ListView.builder(
-        itemCount: newsList.length,
-        itemBuilder: (context, index) {
-          final news = newsList[index];
-          return ListTile(
-            title: Text(news.title),
-            subtitle: Text(news.description),
-            trailing: Text(
-              DateFormat.yMd().add_Hms().format(news.publishedAt),
+      body: ListView(
+        children: newsList.asMap().entries.map((entry) {
+          int index = entry.key;
+          News news = entry.value;
+          return Container(
+            margin:
+                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: _isSelectedList[index]
+                  ? Colors.yellow
+                  : Colors.deepPurpleAccent,
+              borderRadius: BorderRadius.circular(10.0),
+              border: Border.all(color: Colors.grey),
             ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NewsDetail(news: news),
-                ),
-              );
-            },
+            child: ListTile(
+              leading: Checkbox(
+                onChanged: (bool? value) {
+                  setState(() {
+                    _isSelectedList[index] = value ?? false;
+                  });
+                },
+                value: _isSelectedList[index],
+              ),
+              title: Text(news.title),
+              subtitle: Text(news.description),
+              trailing: Text(
+                DateFormat.yMd().add_Hms().format(news.publishedAt),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NewsDetail(news: news),
+                  ),
+                );
+              },
+            ),
           );
-        },
+        }).toList(),
       ),
     );
   }

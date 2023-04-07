@@ -19,3 +19,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+//todo hero widget ile yazilari tasiyabiliriz 
