@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:get/instance_manager.dart';
+import 'package:get/state_manager.dart';
 import 'package:intl/intl.dart';
 
 class News {
@@ -17,7 +20,18 @@ class NewsList extends StatefulWidget {
   _NewsListState createState() => _NewsListState();
 }
 
+class CheckContoroller extends GetxController {
+  var checkbool = <bool>[].obs;
+  @override
+  void onInit() {
+    // İlk değerleri false olarak ayarla
+    checkbool.assignAll(List.filled(5, false));
+    super.onInit();
+  }
+}
+
 class _NewsListState extends State<NewsList> {
+  final CheckContoroller control = Get.put(CheckContoroller());
   final List<News> newsList = [
     News(
       title: 'Birinci Haber Başlığı',
@@ -35,7 +49,7 @@ class _NewsListState extends State<NewsList> {
       publishedAt: DateTime.parse('2022-04-02 16:48:23'),
     ),
   ];
-  final List<bool> _isSelectedList = List.generate(3, (index) => false);
+  List<bool> _isSelectedList = List.generate(3, (index) => false);
 
   @override
   Widget build(BuildContext context) {
@@ -52,21 +66,25 @@ class _NewsListState extends State<NewsList> {
                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
             padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
-              color: _isSelectedList[index]
-                  ? Colors.yellow
-                  : Colors.deepPurpleAccent,
+              color: control.checkbool.value[index]
+                  ? Colors.deepPurpleAccent
+                  : Colors.yellow,
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(color: Colors.grey),
             ),
             child: ListTile(
               leading: Checkbox(
-                onChanged: (bool? value) {
-                  setState(() {
-                    _isSelectedList[index] = value ?? false;
-                  });
-                },
-                value: _isSelectedList[index],
-              ),
+                  onChanged: (bool? value) {
+                    setState(() {
+                      //
+                      control.checkbool[index] = value!;
+                      //_isSelectedList[index] = value ?? false;
+                    });
+                  },
+                  value: control.checkbool.value[index]
+
+                  //_isSelectedList[index],
+                  ),
               title: Text(news.title),
               subtitle: Text(news.description),
               trailing: Text(
