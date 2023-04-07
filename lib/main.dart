@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jam_app/pages/home_page.dart';
+import 'package:jam_app/pages/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const SplachScreen(),
     );
   }
 }
