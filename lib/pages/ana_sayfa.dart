@@ -46,14 +46,6 @@ class Ana_sayfa extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          ElevatedButton(
-            onPressed: () {
-              launched = launchInBrowser(akademiLinkedin);
-            },
-            child: Text(
-              'link button',
-            ),
-          ),
           InkWell(
             onTap: () {
               Navigator.push(context,
