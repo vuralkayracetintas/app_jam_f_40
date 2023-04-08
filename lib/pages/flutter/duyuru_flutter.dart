@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
-import 'package:intl/intl.dart';
 
 class News {
   final String title;
@@ -15,12 +13,14 @@ class News {
       required this.publishedAt});
 }
 
-class NewsList extends StatefulWidget {
+class DuyuruFlutter extends StatefulWidget {
+  const DuyuruFlutter({super.key});
+
   @override
-  _NewsListState createState() => _NewsListState();
+  State<DuyuruFlutter> createState() => _DuyuruFlutterState();
 }
 
-class CheckContoroller extends GetxController {
+class CheckDuyuruContoroller extends GetxController {
   var checkbool = <bool>[].obs;
   @override
   void onInit() {
@@ -30,33 +30,19 @@ class CheckContoroller extends GetxController {
   }
 }
 
-class _NewsListState extends State<NewsList> {
-  final CheckContoroller control = Get.put(CheckContoroller());
+class _DuyuruFlutterState extends State<DuyuruFlutter> {
+  final CheckDuyuruContoroller control = Get.put(CheckDuyuruContoroller());
   final List<News> newsList = [
     News(
-      title: 'Birinci Haber Başlığı',
-      description: 'Birinci haber açıklaması',
+      title: 'Bu aksamki etkinlige herkesi bekliyoruz',
+      description: 'Katilim zorunlu degil',
       publishedAt: DateTime.parse('2022-04-01 12:34:56'),
-    ),
-    News(
-      title: 'İkinci Haber Başlığı',
-      description: 'İkinci haber açıklaması',
-      publishedAt: DateTime.parse('2022-04-03 09:12:34'),
-    ),
-    News(
-      title: 'Üçüncü Haber Başlığı',
-      description: 'Üçüncü haber açıklaması',
-      publishedAt: DateTime.parse('2022-04-02 16:48:23'),
     ),
   ];
   List<bool> _isSelectedList = List.generate(3, (index) => false);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Haberler'),
-      ),
       body: ListView(
         children: newsList.asMap().entries.map((entry) {
           int index = entry.key;
@@ -67,8 +53,8 @@ class _NewsListState extends State<NewsList> {
             padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
               color: control.checkbool.value[index]
-                  ? Colors.deepPurpleAccent
-                  : Colors.yellow,
+                  ? Color(0xff7454e1)
+                  : const Color(0XFFEFB304),
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(color: Colors.grey),
             ),
@@ -87,9 +73,9 @@ class _NewsListState extends State<NewsList> {
                   ),
               title: Text(news.title),
               subtitle: Text(news.description),
-              trailing: Text(
-                DateFormat.yMd().add_Hms().format(news.publishedAt),
-              ),
+              // trailing: Text(
+              //   DateFormat.yMd().add_Hms().format(news.publishedAt),
+              // ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -149,15 +135,15 @@ class _NewsDetailState extends State<NewsDetail> {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 8.0),
-                  Text(
-                    widget.news.description,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
+                  // Text(
+                  //   widget.news.description,
+                  //   style: Theme.of(context).textTheme.bodyMedium,
+                  // ),
                   const SizedBox(height: 8.0),
-                  Text(
-                    DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
+                  // Text(
+                  //   DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
+                  //   style: Theme.of(context).textTheme.bodySmall,
+                  // ),
                 ],
               ),
             ),

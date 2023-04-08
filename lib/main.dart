@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jam_app/pages/ana_sayfa.dart';
 import 'package:jam_app/pages/home_page.dart';
 import 'package:jam_app/pages/splash_screen.dart';
 
@@ -14,12 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
       ),
       home: const SplachScreen(),
     );
   }
 }
-
-
-//todo hero widget ile yazilari tasiyabiliriz 
