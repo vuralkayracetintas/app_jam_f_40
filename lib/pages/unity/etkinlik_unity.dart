@@ -14,11 +14,11 @@ class News {
       required this.publishedAt});
 }
 
-class EtkinlikFlutterPage extends StatefulWidget {
-  const EtkinlikFlutterPage({super.key});
+class EtkinlikUnityPage extends StatefulWidget {
+  const EtkinlikUnityPage({super.key});
 
   @override
-  State<EtkinlikFlutterPage> createState() => _EtkinlikFlutterPageState();
+  State<EtkinlikUnityPage> createState() => _EtkinlikUnityPageState();
 }
 
 class CheckEtklikContoroller extends GetxController {
@@ -31,11 +31,11 @@ class CheckEtklikContoroller extends GetxController {
   }
 }
 
-class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
+class _EtkinlikUnityPageState extends State<EtkinlikUnityPage> {
   final CheckEtklikContoroller control = Get.put(CheckEtklikContoroller());
   final List<News> newsList = [
     News(
-      title: 'Flutter AppJam Eklinligi',
+      title: 'Unity GameJam Eklinligi',
       description: 'Jam\'e katildiysan buraya gelmelisin',
       publishedAt: DateTime.parse('2022-04-01 12:34:56'),
     ),

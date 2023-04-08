@@ -1,7 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+import 'package:get/instance_manager.dart';
+import 'package:get/state_manager.dart';
 
 class News {
   final String title;
@@ -14,14 +13,14 @@ class News {
       required this.publishedAt});
 }
 
-class EtkinlikFlutterPage extends StatefulWidget {
-  const EtkinlikFlutterPage({super.key});
+class DuyuruUnity extends StatefulWidget {
+  const DuyuruUnity({super.key});
 
   @override
-  State<EtkinlikFlutterPage> createState() => _EtkinlikFlutterPageState();
+  State<DuyuruUnity> createState() => _DuyuruUnityState();
 }
 
-class CheckEtklikContoroller extends GetxController {
+class CheckDuyuruContoroller extends GetxController {
   var checkbool = <bool>[].obs;
   @override
   void onInit() {
@@ -31,12 +30,12 @@ class CheckEtklikContoroller extends GetxController {
   }
 }
 
-class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
-  final CheckEtklikContoroller control = Get.put(CheckEtklikContoroller());
+class _DuyuruUnityState extends State<DuyuruUnity> {
+  final CheckDuyuruContoroller control = Get.put(CheckDuyuruContoroller());
   final List<News> newsList = [
     News(
-      title: 'Flutter AppJam Eklinligi',
-      description: 'Jam\'e katildiysan buraya gelmelisin',
+      title: 'Bu aksamki etkinlige herkesi bekliyoruz',
+      description: 'Katilim zorunlu degil',
       publishedAt: DateTime.parse('2022-04-01 12:34:56'),
     ),
   ];
@@ -72,21 +71,16 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
 
                   //_isSelectedList[index],
                   ),
-              // title: Text(news.title),
-              // subtitle: Text(news.description),
+              title: Text(news.title),
+              subtitle: Text(news.description),
               // trailing: Text(
               //   DateFormat.yMd().add_Hms().format(news.publishedAt),
               // ),
-              title: Text(news.title),
-              subtitle: Text(
-                DateFormat.yMd().add_Hms().format(news.publishedAt),
-              ),
-
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => EtliklikDetailsPage(news: news),
+                    builder: (context) => NewsDetail(news: news),
                   ),
                 );
               },
@@ -98,18 +92,16 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
   }
 }
 
-class EtliklikDetailsPage extends StatefulWidget {
+class NewsDetail extends StatefulWidget {
   final News news;
-  const EtliklikDetailsPage({
-    Key? key,
-    required this.news,
-  }) : super(key: key);
+
+  const NewsDetail({Key? key, required this.news}) : super(key: key);
 
   @override
-  State<EtliklikDetailsPage> createState() => _EtliklikDetailsPageState();
+  State<NewsDetail> createState() => _NewsDetailState();
 }
 
-class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
+class _NewsDetailState extends State<NewsDetail> {
   double opacityLevel = 0;
 
   @override
@@ -143,15 +135,15 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 8.0),
-                  Text(
-                    widget.news.description,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
+                  // Text(
+                  //   widget.news.description,
+                  //   style: Theme.of(context).textTheme.bodyMedium,
+                  // ),
                   const SizedBox(height: 8.0),
-                  Text(
-                    DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
+                  // Text(
+                  //   DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
+                  //   style: Theme.of(context).textTheme.bodySmall,
+                  // ),
                 ],
               ),
             ),
