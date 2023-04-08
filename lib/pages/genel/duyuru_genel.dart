@@ -20,7 +20,7 @@ class DuyuruGenel extends StatefulWidget {
   State<DuyuruGenel> createState() => _DuyuruGenelState();
 }
 
-class CheckDuyuruContoroller extends GetxController {
+class CheckDuyuruGenelContoroller extends GetxController {
   var checkbool = <bool>[].obs;
   @override
   void onInit() {
@@ -31,10 +31,12 @@ class CheckDuyuruContoroller extends GetxController {
 }
 
 class _DuyuruGenelState extends State<DuyuruGenel> {
-  final CheckDuyuruContoroller control = Get.put(CheckDuyuruContoroller());
+  final CheckDuyuruGenelContoroller control =
+      Get.put(CheckDuyuruGenelContoroller());
   final List<News> newsList = [
     News(
-      title: 'Seçkin Esen ile Yazılımcılar için İngilizce Canlı Yayınımız BAŞLADI! Hem speaking praktiği yapıp hem de sorularınıza cevap bulabileceğiniz şahane bir etkinlik sizi bekliyor!',
+      title:
+          'Seçkin Esen ile Yazılımcılar için İngilizce Canlı Yayınımız BAŞLADI! Hem speaking praktiği yapıp hem de sorularınıza cevap bulabileceğiniz şahane bir etkinlik sizi bekliyor!',
       description: 'Katilim zorunlu degil',
       publishedAt: DateTime.parse('2022-04-01 12:34:56'),
     ),

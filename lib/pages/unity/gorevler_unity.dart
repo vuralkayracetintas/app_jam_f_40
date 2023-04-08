@@ -21,7 +21,7 @@ class NewsList extends StatefulWidget {
   _NewsListState createState() => _NewsListState();
 }
 
-class CheckGorevContoroller extends GetxController {
+class CheckGorevUnityContoroller extends GetxController {
   var _checkbool = <bool>[].obs;
   @override
   void onInit() {
@@ -32,7 +32,8 @@ class CheckGorevContoroller extends GetxController {
 }
 
 class _NewsListState extends State<NewsList> {
-  final CheckGorevContoroller control = Get.put(CheckGorevContoroller());
+  final CheckGorevUnityContoroller control =
+      Get.put(CheckGorevUnityContoroller());
   final List<News> newsList = [
     News(
       title:

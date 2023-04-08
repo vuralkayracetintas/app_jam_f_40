@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jam_app/pages/unity/duyuru_unity.dart';
+import 'package:jam_app/pages/unity/etkinlik_unity.dart';
+import 'package:jam_app/pages/unity/gorevler_unity.dart';
 
 class CustomTabBarUnity extends StatefulWidget {
   const CustomTabBarUnity({super.key});
@@ -71,15 +74,9 @@ class _CustomTabBarUnityState extends State<CustomTabBarUnity>
           body: TabBarView(
             controller: _tabController,
             children: const <Widget>[
-              Center(
-                child: Text("GÖREVLER LİSTESİ"),
-              ),
-              Center(
-                child: Text("DUYURULAR LİSTESİ"),
-              ),
-              Center(
-                child: Text("ETKİNLİKLER LİSTESİ"),
-              ),
+              NewsList(),
+              DuyuruUnity(),
+              EtkinlikUnityPage(),
             ],
           ),
         ));

@@ -21,7 +21,7 @@ class EtkinlikUnityPage extends StatefulWidget {
   State<EtkinlikUnityPage> createState() => _EtkinlikUnityPageState();
 }
 
-class CheckEtklikContoroller extends GetxController {
+class CheckEtklikUnityContoroller extends GetxController {
   var checkbool = <bool>[].obs;
   @override
   void onInit() {
@@ -32,7 +32,8 @@ class CheckEtklikContoroller extends GetxController {
 }
 
 class _EtkinlikUnityPageState extends State<EtkinlikUnityPage> {
-  final CheckEtklikContoroller control = Get.put(CheckEtklikContoroller());
+  final CheckEtklikUnityContoroller control =
+      Get.put(CheckEtklikUnityContoroller());
   final List<News> newsList = [
     News(
       title: 'Unity GameJam Eklinligi',

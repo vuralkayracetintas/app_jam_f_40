@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:jam_app/pages/splash_screen.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_flutter.dart';
+import 'package:jam_app/pages/tabbar/custom_tabbar_genel.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_unity.dart';
 
 class Ana_sayfa extends StatelessWidget {
@@ -122,35 +123,43 @@ class Ana_sayfa extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: const Color(0xff7454E1),
-            ),
-            height: 100,
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: Row(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    "GENEL \nDUYURULAR",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 19),
-                    textAlign: TextAlign.center,
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CustomTabbarUnityPage()));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: const Color(0xff7454E1),
+              ),
+              height: 100,
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Row(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "GENEL \nDUYURULAR",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 19),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    "assets/images/genel.png",
-                    fit: BoxFit.cover,
-                  ),
-                )
-              ],
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      "assets/images/genel.png",
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           const Spacer(),

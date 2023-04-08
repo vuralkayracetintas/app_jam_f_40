@@ -20,7 +20,7 @@ class DuyuruUnity extends StatefulWidget {
   State<DuyuruUnity> createState() => _DuyuruUnityState();
 }
 
-class CheckDuyuruContoroller extends GetxController {
+class CheckDuyuruUnityContoroller extends GetxController {
   var checkbool = <bool>[].obs;
   @override
   void onInit() {
@@ -31,7 +31,8 @@ class CheckDuyuruContoroller extends GetxController {
 }
 
 class _DuyuruUnityState extends State<DuyuruUnity> {
-  final CheckDuyuruContoroller control = Get.put(CheckDuyuruContoroller());
+  final CheckDuyuruUnityContoroller control =
+      Get.put(CheckDuyuruUnityContoroller());
   final List<News> newsList = [
     News(
       title: 'Bu aksamki etkinlige herkesi bekliyoruz',

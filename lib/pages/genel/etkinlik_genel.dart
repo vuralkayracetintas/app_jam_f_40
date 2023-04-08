@@ -21,7 +21,7 @@ class EtkinlikGenelPage extends StatefulWidget {
   State<EtkinlikGenelPage> createState() => _EtkinlikGenelPageState();
 }
 
-class CheckEtklikContoroller extends GetxController {
+class CheckEtklikGenelContoroller extends GetxController {
   var checkbool = <bool>[].obs;
   @override
   void onInit() {
@@ -32,10 +32,12 @@ class CheckEtklikContoroller extends GetxController {
 }
 
 class _EtkinlikGenelPageState extends State<EtkinlikGenelPage> {
-  final CheckEtklikContoroller control = Get.put(CheckEtklikContoroller());
+  final CheckEtklikGenelContoroller control =
+      Get.put(CheckEtklikGenelContoroller());
   final List<News> newsList = [
     News(
-      title: 'Merhabalar, YARIN 21.00\'da Girişimciler için Finans Soru Cevap Buluşmamız var Eğitmenimiz Serhat Yanık Girişimcilikte Finans\’a dair merak ettiklerinizi cevaplıyor olacak.',
+      title:
+          'Merhabalar, YARIN 21.00\'da Girişimciler için Finans Soru Cevap Buluşmamız var Eğitmenimiz Serhat Yanık Girişimcilikte Finans\’a dair merak ettiklerinizi cevaplıyor olacak.',
       description: 'Katılım zorunlu değil.',
       publishedAt: DateTime.parse('2022-04-01 12:34:56'),
     ),

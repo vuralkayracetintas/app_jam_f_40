@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:jam_app/pages/genel/duyuru_genel.dart';
 import 'package:jam_app/pages/genel/etkinlik_genel.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class CustomTabbarUnityPage extends StatefulWidget {
+  const CustomTabbarUnityPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<CustomTabbarUnityPage> createState() => _CustomTabbarUnityPageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _CustomTabbarUnityPageState extends State<CustomTabbarUnityPage>
+    with TickerProviderStateMixin {
   late TabController _tabController;
   TabBar get _tabBar => TabBar(
         controller: _tabController,
@@ -36,7 +37,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _tabController = TabController(
-      length: 3,
+      length: 2,
       vsync: this,
     );
   }
@@ -80,7 +81,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           appBar: AppBar(
               backgroundColor: const Color(0xff7454e1),
@@ -101,10 +102,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           body: TabBarView(
             controller: _tabController,
             children: const <Widget>[
-              //DuyuruFlutter(), DuyuruFlutter(), DuyuruFlutter(),
-              NewsList(),
               DuyuruGenel(),
-              EtkinlikGenelPage()
+              EtkinlikGenelPage(),
+              //DuyuruFlutter(), DuyuruFlutter(), DuyuruFlutter(),
+
               // Center(
               //   child: Text("GÖREVLER LİSTESİ"),
               // ),
