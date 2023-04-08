@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jam_app/pages/package/use_url.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_flutter.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_genel.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_unity.dart';
@@ -15,7 +16,7 @@ class Ana_sayfa extends StatelessWidget {
           child: Column(
         children: [
           Container(
-            height: 150,
+            height: MediaQuery.of(context).size.height * 0.2,
             width: MediaQuery.of(context).size.width,
             color: const Color(0xff9A82E9),
             child: Align(
@@ -38,12 +39,21 @@ class Ana_sayfa extends StatelessWidget {
                   Image.asset(
                     "assets/images/login.png",
                     fit: BoxFit.cover,
+                    height: 200,
                   )
                 ],
               ),
             ),
           ),
           const Spacer(),
+          ElevatedButton(
+            onPressed: () {
+              launched = launchInBrowser(akademiLinkedin);
+            },
+            child: Text(
+              'link button',
+            ),
+          ),
           InkWell(
             onTap: () {
               Navigator.push(context,

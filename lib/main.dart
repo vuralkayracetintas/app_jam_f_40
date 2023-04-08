@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: const SplachScreen(),
+      home: const Ana_sayfa(),
     );
   }
 }
 //todo fab iconlari degisecek web adresine gidecekse web view veya url laucnher kutuphanesi kurulacak entegre edicek
-//todo 
+//todo duyurlar centik kaldir
