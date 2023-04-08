@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:jam_app/pages/splash_screen.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_flutter.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_genel.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_unity.dart';
+import 'package:jam_app/pages/widgets/customFAB.dart';
 
 class Ana_sayfa extends StatelessWidget {
   const Ana_sayfa({super.key});
@@ -12,6 +10,7 @@ class Ana_sayfa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: CustomFAB(),
       body: Center(
           child: Column(
         children: [
@@ -162,7 +161,9 @@ class Ana_sayfa extends StatelessWidget {
               ),
             ),
           ),
-          const Spacer(),
+          Spacer(
+            flex: 2,
+          )
         ],
       )),
     );

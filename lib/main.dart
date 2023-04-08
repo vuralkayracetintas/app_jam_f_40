@@ -20,4 +20,6 @@ class MyApp extends StatelessWidget {
       home: const SplachScreen(),
     );
   }
-}//todo drawer da akademinin sosyal medya hesaplarini ekleyebiliriz
+}
+//todo fab iconlari degisecek web adresine gidecekse web view veya url laucnher kutuphanesi kurulacak entegre edicek
+//todo 

@@ -1,6 +1,6 @@
 # jam_app
 
-A new Flutter project.
+Oyun ve Uygulama Akademisi AppJam F-40 takimi projesidir.
 
 ## Getting Started
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jam_app/pages/ana_sayfa.dart';
-import 'package:jam_app/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -57,13 +56,30 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: const Color(0xff7454E1),
       body: Center(
-        child: Stack(children: [
-          // Image.asset(
-          //   'assets/images/bg.jpeg',
-          //   fit: BoxFit.cover,
-          // ),
-          SingleChildScrollView(
-            child: Column(
+        child: Stack(
+          children: [
+            ClipPath(
+              clipper: CustomShape(),
+              child: Container(
+                  height: 300,
+                  width: MediaQuery.of(context).size.width,
+                  color: const Color(0xff9A82E9)),
+            ),
+            Positioned(
+              //left: 200,
+              top: 550,
+              child: ClipPath(
+                  clipper: CustomShape2(),
+                  child: Container(
+                      height: 300,
+                      width: MediaQuery.of(context).size.width,
+                      color: Color(0xff9A82E9))),
+            ),
+            // Image.asset(
+            //   'assets/images/bg.jpeg',
+            //   fit: BoxFit.cover,
+            // ),
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Image(image: AssetImage('assets/images/oua.png')),
@@ -163,8 +179,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }
@@ -180,4 +196,44 @@ class _LoginPageState extends State<LoginPage> {
           duration: const Duration(milliseconds: 10)),
     );
   }
+}
+
+class CustomShape extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    double height = size.height;
+    double width = size.width;
+    path.lineTo(0, height);
+    path.quadraticBezierTo(width * 0.6, height, width, height - 300);
+    path.lineTo(width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return true;
+  }
+}
+
+class CustomShape2 extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    double height = size.height;
+    double width = size.width;
+    double controlPointX = width / 2;
+    double controlPointY = height / 8;
+    path.lineTo(0, height - 50);
+    path.lineTo(0, height);
+    path.lineTo(width, height);
+    path.lineTo(width, height - 50);
+    path.quadraticBezierTo(controlPointX, controlPointY, 0, height - 50);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

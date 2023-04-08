@@ -36,8 +36,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   intl: ^0.18.0
+  #state
   get: ^4.6.5
+  #ui
   lottie: ^2.3.2
+  flutter_speed_dial: ^6.2.0
+  font_awesome_flutter: ^10.4.0
 
 dev_dependencies:
   flutter_test:
