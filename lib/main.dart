@@ -20,4 +20,4 @@ class MyApp extends StatelessWidget {
       home: const SplachScreen(),
     );
   }
-}
+}//todo drawer da akademinin sosyal medya hesaplarini ekleyebiliriz
