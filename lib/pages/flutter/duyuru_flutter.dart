@@ -59,18 +59,18 @@ class _DuyuruFlutterState extends State<DuyuruFlutter> {
               border: Border.all(color: Colors.grey),
             ),
             child: ListTile(
-              leading: Checkbox(
-                  onChanged: (bool? value) {
-                    setState(() {
-                      //
-                      control.checkbool[index] = value!;
-                      //_isSelectedList[index] = value ?? false;
-                    });
-                  },
-                  value: control.checkbool.value[index]
+              // leading: Checkbox(
+              //     onChanged: (bool? value) {
+              //       setState(() {
+              //         //
+              //         control.checkbool[index] = value!;
+              //         //_isSelectedList[index] = value ?? false;
+              //       });
+              //     },
+              //     value: control.checkbool.value[index]
 
-                  //_isSelectedList[index],
-                  ),
+              //     //_isSelectedList[index],
+              //     ),
               title: Text(news.title),
               subtitle: Text(news.description),
               // trailing: Text(
@@ -135,10 +135,10 @@ class _NewsDetailState extends State<NewsDetail> {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 8.0),
-                  // Text(
-                  //   widget.news.description,
-                  //   style: Theme.of(context).textTheme.bodyMedium,
-                  // ),
+                  Text(
+                    widget.news.description,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                   const SizedBox(height: 8.0),
                   // Text(
                   //   DateFormat.yMd().add_Hms().format(widget.news.publishedAt),

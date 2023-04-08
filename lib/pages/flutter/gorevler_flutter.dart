@@ -78,7 +78,7 @@ class _NewsListState extends State<NewsList> {
             padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
               color: control._checkbool.value[index]
-                  ? Color(0xff7454e1)
+                  ? const Color(0xff7454e1)
                   : const Color(0XFFEFB304),
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(color: Colors.grey),

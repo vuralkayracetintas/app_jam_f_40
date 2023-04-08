@@ -17,9 +17,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: const Ana_sayfa(),
+      home: const SplachScreen(),
     );
   }
 }
 //todo fab iconlari degisecek web adresine gidecekse web view veya url laucnher kutuphanesi kurulacak entegre edicek
-//todo duyurlar centik kaldir
+//todo flutter duyurular aciklama sayfasi 
+//todo flutter etkinlik sayfasinin acilamalari olsun.
+
+
+
+
+
+//todo unity etkinlik centik kaldir 
+//todo unity duyurular aciklama sayfasi 
+//todo unity etkinlik sayfasinin acilamalari olsun.
+//todo mentor sayfasi
