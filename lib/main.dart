@@ -28,12 +28,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.purple),
-      home: const Ana_sayfa(),
+      home: const SplachScreen(),
     );
   }
 }
-//todo flutter etkinlik sayfasinin acilamalari olsun.
+//todo gorevler duyurular etkinlikler sayfasindaki container renkleri degisecek unity ve genel duyurular
+//todo  unity etkinlik sayfasi tasarimi degisecek 
+// todo yildizlari ayarlar
+//todo genel etkinlik appbar rengi degisecek 
+// todo genel etkinlik sayfa duzeni degisecek
 
-//todo unity etkinlik sayfasinin acilamalari olsun.
-
-//todo mentor sayfasi
