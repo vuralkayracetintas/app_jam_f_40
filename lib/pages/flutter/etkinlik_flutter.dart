@@ -45,9 +45,28 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
       description: 'Jam\'e katildiysan bu etkiligi kacirma',
       publishedAt: DateTime.parse('2023-04-01 21:00'),
       etkinlikIcerigi:
+          'Game & App Jam App Jam açılışı ile başlıyor. Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un katılımıyla gerçekleştireceğimiz etkinlikte App Jam temasını ve App Jam’e dair süreç detaylarını konuşacağız.Katilimlarinizi bekliyoruz.',
+    ),
+    News(
+      title: 'Flutter Soru Eklinligi',
+      description: 'Jam\'e katildiysan bu etkiligi kacirma',
+      publishedAt: DateTime.parse('2023-04-01 21:00'),
+      etkinlikIcerigi:
+          'Game & App Jam App Jam açılışı ile başlıyor. Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un katılımıyla gerçekleştireceğimiz etkinlikte App Jam temasını ve App Jam’e dair süreç detaylarını konuşacağız',
+    ),
+    News(
+      title: 'Deneme Eklinligi',
+      description: 'Jam\'e katildiysan bu etkiligi kacirma',
+      publishedAt: DateTime.parse('2023-04-01 21:00'),
+      etkinlikIcerigi:
           'Game & App Jam App Jam açılışı ile başlıyor. Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un katılımıyla gerçekleştireceğimiz etkinlikte App Jam temasını ve App Jam’e dair süreç detaylarını konuşacağız',
     ),
   ];
+
+  get news => null;
+
+  // This function is called whenever the text field changes
+
   List<bool> _isSelectedList = List.generate(3, (index) => false);
   final searchController = TextEditingController();
   @override
@@ -58,93 +77,108 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
     });
   }
 
+  String searchQuery = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView.builder(
-            itemCount: newsList.length,
-            itemBuilder: (
-              BuildContext context,
-              int index,
-            ) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          prefixIconColor: const Color(0xff7454e1),
-                          contentPadding:
-                              const EdgeInsets.symmetric(vertical: 10.0),
-                          suffixIconColor: const Color(0xff7454e1),
-                          prefixIcon: const Icon(Icons.search),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          labelText: 'Etkinlik Ara',
-                          suffixIcon: searchController.text.isEmpty
-                              ? Container(width: 0)
-                              : IconButton(
-                                  icon: const Icon(Icons.close),
-                                  onPressed: () {
-                                    searchController.clear();
+        body: Column(children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+        child: TextFormField(
+          onChanged: (value) {
+            setState(() {
+              searchQuery = value;
+            });
+          },
+          decoration: InputDecoration(
+            prefixIconColor: const Color(0xff7454e1),
+            contentPadding: const EdgeInsets.symmetric(vertical: 10.0),
+            suffixIconColor: const Color(0xff7454e1),
+            prefixIcon: const Icon(Icons.search),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            labelText: 'Etkinlik Ara',
+            suffixIcon: searchController.text.isEmpty
+                ? Container(width: 0)
+                : IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: () {
+                      searchController.clear();
+                    },
+                  ),
+          ),
+          controller: searchController,
+        ),
+      ),
+      searchQuery.isNotEmpty
+          ? Expanded(
+              child: ListView.builder(
+                  itemCount: newsList
+                      .where((news) => news.title
+                          .toLowerCase()
+                          .contains(searchQuery.toLowerCase()))
+                      .length,
+                  itemBuilder: (
+                    BuildContext context,
+                    int index,
+                  ) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 20.0),
+                            padding: const EdgeInsets.all(10.0),
+                            decoration: BoxDecoration(
+                              color: control.checkbool.value[index]
+                                  ? const Color(0XFFEFB304)
+                                  : const Color(0xff7454E1),
+                              borderRadius: BorderRadius.circular(10.0),
+                              border: Border.all(
+                                  color: control.checkbool.value[index]
+                                      ? const Color(0xff7454E1)
+                                      : const Color(0XFFEFB304),
+                                  width: 2),
+                            ),
+                            child: ListTile(
+                              title: Text(newsList[index].title),
+                              subtitle: Text(newsList[index].description),
+                              // trailing: Text(
+                              //   DateFormat.yMd().add_Hms().format(news.publishedAt),
+                              // ),
+                              leading: Checkbox(
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      //
+                                      control.checkbool[index] = value!;
+                                      //_isSelectedList[index] = value ?? false;
+                                    });
                                   },
-                                ),
-                        ),
-                        controller: searchController,
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
-                      padding: const EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        color: control.checkbool.value[index]
-                            ? const Color(0XFFEFB304)
-                            : const Color(0xff7454E1),
-                        borderRadius: BorderRadius.circular(10.0),
-                        border: Border.all(
-                            color: control.checkbool.value[index]
-                                ? const Color(0xff7454E1)
-                                : const Color(0XFFEFB304),
-                            width: 2),
-                      ),
-                      child: ListTile(
-                        title: Text(newsList[index].title),
-                        subtitle: Text(newsList[index].description),
-                        // trailing: Text(
-                        //   DateFormat.yMd().add_Hms().format(news.publishedAt),
-                        // ),
-                        leading: Checkbox(
-                            onChanged: (bool? value) {
-                              setState(() {
-                                //
-                                control.checkbool[index] = value!;
-                                //_isSelectedList[index] = value ?? false;
-                              });
-                            },
-                            value: control.checkbool.value[index]
+                                  value: control.checkbool.value[index]
 
-                            //_isSelectedList[index],
+                                  //_isSelectedList[index],
+                                  ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => EtliklikDetailsPage(
+                                        news: newsList[index]),
+                                  ),
+                                );
+                              },
                             ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  EtliklikDetailsPage(news: newsList[index]),
-                            ),
-                          );
-                        },
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-              );
-            }));
+                    );
+                  }),
+            )
+          : const Text('Listede eleman bulunamadi')
+    ]));
   }
 }
 
@@ -205,7 +239,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
               opacity: opacityLevel,
               duration: const Duration(milliseconds: 1000),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Column(
                     children: [
@@ -229,7 +263,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Expanded(
@@ -239,7 +273,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               alignment: Alignment.center,
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Text(
                                 DateFormat.yMd()
                                     .add_Hm()
@@ -271,7 +305,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     child: Text(
                       widget.news.etkinlikIcerigi,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ),
                   ElevatedButton(
@@ -284,13 +318,13 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                       'Etkinlige Katil',
                     ),
                   ),
-                  Spacer(),
-                  const Padding(
+
+                  Padding(
                     padding: EdgeInsets.only(
-                      top: 50.0,
+                      top: MediaQuery.of(context).size.height * 0.07,
                       bottom: 10,
                     ),
-                    child: Text('Etkinlikten Memnun Kaldiniz Mi ?'),
+                    child: const Text('Etkinlikten Memnun Kaldiniz Mi ?'),
                   ),
                   RatingBar.builder(
                     initialRating: 0,
@@ -330,10 +364,10 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     ),
                     controller: durumController,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff7454e1),
+                        backgroundColor: const Color(0xff7454e1),
                         minimumSize:
                             Size(MediaQuery.of(context).size.width * 0.7, 40)),
                     onPressed: () {
@@ -346,7 +380,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                       'Gonder',
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   )
                 ],
