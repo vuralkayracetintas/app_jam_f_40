@@ -21,9 +21,7 @@ class CustomFAB extends StatelessWidget {
         SpeedDialChild(
           child: const Icon(Icons.mail),
           label: 'info@oyunveuygulamaakademisi.com',
-          onTap: () {
-            launched = launchInBrowser(akademiMail);
-          },
+          onTap: () {},
         ),
         SpeedDialChild(
           child: const Icon(FontAwesomeIcons.linkedin),

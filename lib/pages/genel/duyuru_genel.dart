@@ -109,7 +109,7 @@ Yarın akşam ideathon temalarınıza dair detayları canlı yayında öğrenece
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                     color: control.checkbool.value[index]
-                        ? Color(0XFFEFB304)
+                        ? const Color(0XFFEFB304)
                         : const Color(0xff7454e1),
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
@@ -119,8 +119,22 @@ Yarın akşam ideathon temalarınıza dair detayları canlı yayında öğrenece
                         width: 2),
                   ),
                   child: ListTile(
-                    title: Text(newsList[index].title),
-                    subtitle: Text(newsList[index].description),
+                    title: Text(
+                      newsList[index].title,
+                      style: TextStyle(
+                        color: control.checkbool.value[index]
+                            ? const Color.fromARGB(255, 0, 0, 0)
+                            : const Color.fromARGB(255, 255, 255, 255),
+                      ),
+                    ),
+                    subtitle: Text(
+                      newsList[index].description,
+                      style: TextStyle(
+                        color: control.checkbool.value[index]
+                            ? const Color.fromARGB(255, 0, 0, 0)
+                            : const Color.fromARGB(255, 255, 255, 255),
+                      ),
+                    ),
                     // trailing: Text(
                     //   DateFormat.yMd().add_Hms().format(news.publishedAt),
                     // ),
@@ -166,8 +180,8 @@ class _NewsDetailState extends State<NewsDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff7454E1),
-        title: Text('Oyun ve Uygulama Akademisi'),
+        backgroundColor: const Color(0xff7454E1),
+        title: const Text('Oyun ve Uygulama Akademisi'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

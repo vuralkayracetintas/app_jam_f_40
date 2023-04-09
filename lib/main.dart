@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.purple),
-      home: const Ana_sayfa(),
+      home: const SplachScreen(),
     );
   }
 }

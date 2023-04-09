@@ -29,7 +29,10 @@ class _LoginPageState extends State<LoginPage> {
         // Kullanıcı adı veya şifre yanlışsa, bir hata mesajı gösterin
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Kullanıcı adı veya şifre yanlış.'),
+            content: Text(
+              'Kullanıcı adı veya şifre yanlış.',
+              textAlign: TextAlign.center,
+            ),
           ),
         );
       }

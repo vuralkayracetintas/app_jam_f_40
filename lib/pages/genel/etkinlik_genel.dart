@@ -125,9 +125,21 @@ class _EtkinlikGenelPageState extends State<EtkinlikGenelPage> {
                   // trailing: Text(
                   //   DateFormat.yMd().add_Hms().format(news.publishedAt),
                   // ),
-                  title: Text(news.title),
+                  title: Text(
+                    news.title,
+                    style: TextStyle(
+                      color: control.checkbool.value[index]
+                          ? Color.fromARGB(255, 0, 0, 0)
+                          : Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
                   subtitle: Text(
                     DateFormat.yMd().add_Hms().format(news.publishedAt),
+                    style: TextStyle(
+                      color: control.checkbool.value[index]
+                          ? Color.fromARGB(255, 0, 0, 0)
+                          : Color.fromARGB(255, 255, 255, 255),
+                    ),
                   ),
 
                   onTap: () {
@@ -188,31 +200,87 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
         backgroundColor: const Color(0xff7454e1),
         title: const Text('Oyun ve Uygulama Akademisi'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AnimatedOpacity(
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: AnimatedOpacity(
               opacity: opacityLevel,
               duration: const Duration(milliseconds: 1000),
               child: Column(
                 children: [
-                  Text(
-                    widget.news.title,
-                    style: Theme.of(context).textTheme.titleLarge,
-                    textAlign: TextAlign.center,
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          alignment: Alignment.center,
+                          height: 50,
+                          child: Text(
+                            widget.news.title,
+                            style: Theme.of(context).textTheme.titleLarge,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(10),
+                          child: Text(
+                            DateFormat.yMd()
+                                .add_Hm()
+                                .format(widget.news.publishedAt),
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 20.0),
                   Text(
                     widget.news.description,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
-                    style: Theme.of(context).textTheme.bodySmall,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0, bottom: 10),
+                    child: Text(
+                      widget.news.etkinlikIcerigi,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 20),
+                    ),
                   ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff7454e1),
+                        minimumSize:
+                            Size(MediaQuery.of(context).size.width * 0.7, 40)),
+                    onPressed: () {},
+                    child: const Text(
+                      'Etkinlige Katil',
+                    ),
+                  ),
+                  const SizedBox(height: 8.0),
                   const Padding(
                     padding: EdgeInsets.only(
                       top: 50.0,
@@ -221,7 +289,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     child: Text('Etkinlikten Memnun Kaldiniz Mi ?'),
                   ),
                   RatingBar.builder(
-                    initialRating: 1,
+                    initialRating: 0,
                     minRating: 1,
                     direction: Axis.horizontal,
                     allowHalfRating: true,
@@ -279,7 +347,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                 ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

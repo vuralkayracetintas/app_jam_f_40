@@ -111,8 +111,22 @@ class _EtkinlikUnityPageState extends State<EtkinlikUnityPage> {
                             width: 2),
                       ),
                       child: ListTile(
-                        title: Text(newsList[index].title),
-                        subtitle: Text(newsList[index].description),
+                        title: Text(
+                          newsList[index].title,
+                          style: TextStyle(
+                            color: control.checkbool.value[index]
+                                ? Color.fromARGB(255, 0, 0, 0)
+                                : Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        ),
+                        subtitle: Text(
+                          newsList[index].description,
+                          style: TextStyle(
+                            color: control.checkbool.value[index]
+                                ? Color.fromARGB(255, 0, 0, 0)
+                                : Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        ),
                         // trailing: Text(
                         //   DateFormat.yMd().add_Hms().format(news.publishedAt),
                         // ),

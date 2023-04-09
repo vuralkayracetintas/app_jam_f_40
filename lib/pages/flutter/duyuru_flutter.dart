@@ -122,11 +122,21 @@ class _DuyuruFlutterState extends State<DuyuruFlutter> {
                         ? Color(0XFFEFB304)
                         : const Color(0xff7454e1),
                     borderRadius: BorderRadius.circular(10.0),
-                    border: Border.all(color: Colors.yellow, width: 2),
+                    border: Border.all(color: Colors.yellow, width: 3),
                   ),
                   child: ListTile(
-                    title: Text(newsList[index].title),
-                    subtitle: Text(newsList[index].description),
+                    title: Text(
+                      newsList[index].title,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    subtitle: Text(
+                      newsList[index].description,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
                     // trailing: Text(
                     //   DateFormat.yMd().add_Hms().format(news.publishedAt),
                     // ),
