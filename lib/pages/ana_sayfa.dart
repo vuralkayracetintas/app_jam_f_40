@@ -5,8 +5,21 @@ import 'package:jam_app/pages/tabbar/custom_tabbar_genel.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_unity.dart';
 import 'package:jam_app/pages/widgets/customFAB.dart';
 
-class Ana_sayfa extends StatelessWidget {
+class Ana_sayfa extends StatefulWidget {
   const Ana_sayfa({super.key});
+
+  @override
+  State<Ana_sayfa> createState() => _Ana_sayfaState();
+}
+
+class _Ana_sayfaState extends State<Ana_sayfa> {
+  bool isDarkModeEnabled = false;
+
+  void _toggleTheme() {
+    setState(() {
+      isDarkModeEnabled = !isDarkModeEnabled;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

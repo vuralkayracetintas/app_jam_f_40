@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -153,9 +155,18 @@ class EtliklikDetailsPage extends StatefulWidget {
   State<EtliklikDetailsPage> createState() => _EtliklikDetailsPageState();
 }
 
+class RatingGenelController extends GetxController {
+  double _rating = 0.0;
+  double get savedRating => _rating;
+
+  void updateRating(double rating) {
+    _rating = rating;
+  }
+}
+
 class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
   double opacityLevel = 0;
-
+  final durumGenelController = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -196,6 +207,69 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      top: 50.0,
+                      bottom: 10,
+                    ),
+                    child: Text('Etkinlikten Memnun Kaldiniz Mi ?'),
+                  ),
+                  RatingBar.builder(
+                    initialRating: 1,
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    itemBuilder: (context, _) => const Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                    ),
+                    onRatingUpdate: (rating) {
+                      Get.put(RatingGenelController());
+                      Get.find<RatingGenelController>().updateRating(rating);
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  const SizedBox(height: 30),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      prefixIconColor: Colors.deepPurpleAccent,
+                      suffixIconColor: Colors.deepPurpleAccent,
+                      prefixIcon: const Icon(Icons.mail_outline),
+                      border: const OutlineInputBorder(),
+                      labelText: 'Neden Bu Puani verdin ?',
+                      hintText: 'Kisa bir cumle ile aciklayiniz',
+                      suffixIcon: durumGenelController.text.isEmpty
+                          ? Container(width: 0)
+                          : IconButton(
+                              icon: const Icon(Icons.close),
+                              onPressed: () {
+                                durumGenelController.clear();
+                              },
+                            ),
+                    ),
+                    controller: durumGenelController,
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff7454e1),
+                        minimumSize:
+                            Size(MediaQuery.of(context).size.width * 0.7, 40)),
+                    onPressed: () {
+                      final rating = Get.find<RatingGenelController>()._rating;
+                      final text = durumGenelController.text;
+                      customMyDialog(context, rating, text);
+                      durumGenelController.clear();
+                    },
+                    child: const Text(
+                      'Gonder',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  )
                 ],
               ),
             ),
@@ -204,4 +278,37 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
       ),
     );
   }
+}
+
+Future<dynamic> customMyDialog(
+    BuildContext context, double rating, String text) {
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) => CupertinoAlertDialog(
+      title: const Text('Tesekkurler'),
+      content: Column(
+        children: [
+          Text('Puanin : $rating'),
+          Text('Yorumun : $text'),
+          const Text(
+              'Puanin ve yorumun kaydedildi.Gelecek etkinliklerde gorusmek uzere')
+        ],
+      ),
+      actions: <CupertinoDialogAction>[
+        CupertinoDialogAction(
+          isDestructiveAction: true,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(
+            'Tamam',
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(color: Colors.red),
+          ),
+        ),
+      ],
+    ),
+  );
 }

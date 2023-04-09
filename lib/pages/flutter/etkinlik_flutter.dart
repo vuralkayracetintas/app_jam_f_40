@@ -43,8 +43,9 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
     News(
       title: 'Flutter AppJam Eklinligi',
       description: 'Jam\'e katildiysan buraya gelmelisin',
-      publishedAt: DateTime.parse('2023-04-01 12:34:56'),
-      etkinlikIcerigi: 'Deneme',
+      publishedAt: DateTime.parse('2023-04-01 21:00'),
+      etkinlikIcerigi:
+          'Game & App Jam App Jam açılışı ile başlıyor. Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un katılımıyla gerçekleştireceğimiz etkinlikte App Jam temasını ve App Jam’e dair süreç detaylarını konuşacağız',
     ),
   ];
   List<bool> _isSelectedList = List.generate(3, (index) => false);
@@ -181,32 +182,6 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
     });
   }
 
-  void _showAlertDialog(BuildContext context) {
-    showCupertinoModalPopup<void>(
-      context: context,
-      builder: (BuildContext context) => CupertinoAlertDialog(
-        title: const Text('Tesekkurler'),
-        content: const Text(
-            ' Yorumun ve degerlendirmen kaydedildi Baska etkinliklerde gorusmek uzere'),
-        actions: <CupertinoDialogAction>[
-          CupertinoDialogAction(
-            isDestructiveAction: true,
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Tamam',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(color: Colors.red),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -242,6 +217,13 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 10),
+                    child: Text(
+                      widget.news.etkinlikIcerigi,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xff7454e1),
@@ -260,7 +242,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     child: Text('Etkinlikten Memnun Kaldiniz Mi ?'),
                   ),
                   RatingBar.builder(
-                    initialRating: 1,
+                    initialRating: 0,
                     minRating: 1,
                     direction: Axis.horizontal,
                     allowHalfRating: true,
