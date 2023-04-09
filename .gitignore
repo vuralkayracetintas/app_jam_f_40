@@ -31,10 +31,12 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+
 firebase_options.dart
 
 #Firebase
 ios/firebase_app_id_file.json
+
 
 # Symbolication related
 app.*.symbols
@@ -46,3 +48,4 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/android/app/google-services.json/
