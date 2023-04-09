@@ -9,11 +9,14 @@ class News {
   final String title;
   final String description;
   final DateTime publishedAt;
+  final String etkinlikIcerigi;
 
-  News(
-      {required this.title,
-      required this.description,
-      required this.publishedAt});
+  News({
+    required this.title,
+    required this.description,
+    required this.publishedAt,
+    required this.etkinlikIcerigi,
+  });
 }
 
 class EtkinlikFlutterPage extends StatefulWidget {
@@ -41,6 +44,7 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
       title: 'Flutter AppJam Eklinligi',
       description: 'Jam\'e katildiysan buraya gelmelisin',
       publishedAt: DateTime.parse('2023-04-01 12:34:56'),
+      etkinlikIcerigi: 'Deneme',
     ),
   ];
   List<bool> _isSelectedList = List.generate(3, (index) => false);
@@ -275,7 +279,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                   prefixIcon: const Icon(Icons.mail_outline),
                   border: const OutlineInputBorder(),
                   labelText: 'Neden Bu Puani verdin ?',
-                  hintText: 'E-Mail Adresinizi Giriniz',
+                  hintText: 'Kisa bir cumle ile aciklayiniz',
                   suffixIcon: durumController.text.isEmpty
                       ? Container(width: 0)
                       : IconButton(
@@ -290,40 +294,14 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
               SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xff7454e1),
                     minimumSize:
                         Size(MediaQuery.of(context).size.width * 0.7, 40)),
                 onPressed: () {
                   final rating = Get.find<RatingController>()._rating;
                   final text = durumController.text;
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) => CupertinoAlertDialog(
-                      title: const Text('Tesekkurler'),
-                      content: Column(
-                        children: [
-                          Text('Puanin : $rating'),
-                          Text('Yorumun : $text'),
-                          const Text(
-                              'Puanin ve yorumun kaydedildi.Gelecek etkinliklerde gorusmek uzere')
-                        ],
-                      ),
-                      actions: <CupertinoDialogAction>[
-                        CupertinoDialogAction(
-                          isDestructiveAction: true,
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text(
-                            'Tamam',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(color: Colors.red),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                  customMyDialog(context, rating, text);
+                  durumController.clear();
                 },
                 child: const Text(
                   'Gonder',
@@ -335,6 +313,39 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Future<dynamic> customMyDialog(
+      BuildContext context, double rating, String text) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        title: const Text('Tesekkurler'),
+        content: Column(
+          children: [
+            Text('Puanin : $rating'),
+            Text('Yorumun : $text'),
+            const Text(
+                'Puanin ve yorumun kaydedildi.Gelecek etkinliklerde gorusmek uzere')
+          ],
+        ),
+        actions: <CupertinoDialogAction>[
+          CupertinoDialogAction(
+            isDestructiveAction: true,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text(
+              'Tamam',
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(color: Colors.red),
+            ),
+          ),
+        ],
       ),
     );
   }
