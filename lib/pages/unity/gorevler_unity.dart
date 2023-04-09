@@ -94,7 +94,9 @@ class _NewsListState extends State<NewsList> {
                       border: Border.all(color: Colors.grey),
                     ),
                     child: ListTile(
-                      title: Text(newsList[index].title),
+                      title: Text(
+                        newsList[index].title,
+                      ),
 
                       // trailing: Text(
                       //   DateFormat.yMd().add_Hms().format(news.publishedAt),
