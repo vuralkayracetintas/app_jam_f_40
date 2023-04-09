@@ -171,7 +171,7 @@ class _NewsDetailState extends State<NewsDetail> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff7454E1),
-        title: Text('Genel Duyurular'),
+        title: Text('Oyun ve Uygulama Akademisi'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

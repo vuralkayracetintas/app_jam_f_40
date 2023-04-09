@@ -126,7 +126,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.news.title),
+        title: Text('Oyun ve Uygulama Akademisi'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -46,10 +46,10 @@ class _DuyuruFlutterState extends State<DuyuruFlutter> {
       etkinlikIcerigi:
           'Merhabalar, Flutter Soru – Cevap etinliğimiz başladı. Eğitmenimiz Sercan Yusuf Flutter eğitimi’ne dair merak ettiklerinizi cevaplıyor olacak. Müsait olan herkesi bekleriz.',
       etkinlikUrl: Uri(
-          scheme: 'https',
-          host: 'www.google.com',
-          path: '',
-        ),
+        scheme: 'https',
+        host: 'www.google.com',
+        path: '',
+      ),
     ),
     News(
       title: 'Flutter App Jam Soru – Cevap',
@@ -58,10 +58,10 @@ class _DuyuruFlutterState extends State<DuyuruFlutter> {
       etkinlikIcerigi:
           'Merhabalar, Flutter Eğitmenimiz Sercan Yusuf App Jam’e dair sorularınızı yanıtlamak için sizleri bekliyor.',
       etkinlikUrl: Uri(
-          scheme: 'https',
-          host: 'www.google.com',
-          path: '',
-        ),
+        scheme: 'https',
+        host: 'www.google.com',
+        path: '',
+      ),
     ),
     News(
       title: 'App Jam Materyal',
@@ -70,10 +70,10 @@ class _DuyuruFlutterState extends State<DuyuruFlutter> {
       etkinlikIcerigi:
           'Merhabalar, APP JAM başladı! Konseptimiz Akademi içinde kullanılabilecek uygulamalar! Ek materyallere buradan erişebilir, yayın kaydına ve detaylarına bu bağlantıdan ulaşabilirsiniz. Herkese başarılar diliyoruz!',
       etkinlikUrl: Uri(
-          scheme: 'https',
-          host: 'www.google.com',
-          path: '',
-        ),
+        scheme: 'https',
+        host: 'www.google.com',
+        path: '',
+      ),
     ),
     News(
       title: 'App Jam Başladı',
@@ -82,10 +82,10 @@ class _DuyuruFlutterState extends State<DuyuruFlutter> {
       etkinlikIcerigi:
           'Merhabalar App Jam Açılışı BAŞLADI. Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un katılımıyla gerçekleştireceğimiz etkinlikte App Jam temasını ve App Jam’e dair süreç detaylarını konuşuyoruz. *Etkinliğe katılım zorunlu değil fakat takımınızdan en az bir kişinin katılmasını sürece hâkim olmanız için tavsiye ederiz',
       etkinlikUrl: Uri(
-          scheme: 'https',
-          host: 'www.youtube.com',
-          path: '',
-        ),
+        scheme: 'https',
+        host: 'www.youtube.com',
+        path: '',
+      ),
     ),
     News(
       title: 'Ideathon',
@@ -94,10 +94,10 @@ class _DuyuruFlutterState extends State<DuyuruFlutter> {
       etkinlikIcerigi:
           'Merhabalar Ideathon’da Önceliklendirilen Takımları BU AKŞAM 20.00’da Partnerlerimizin de katılımıyla YouTube Canlı Yayın’ında açıklıyoruz.Süreç boyunca gösterdiğimiz ilgi ve emek için hepinize tekrar teşekkür ederizIdeathon Sertifikası alabilmek için Ideathon sonrası değerlendirme formumuzu doldurmanız gerekiyor. Değerlendirme Formumuzu bu akşam paylaşacağız.',
       etkinlikUrl: Uri(
-          scheme: 'https',
-          host: 'www.youtube.com',
-          path: '',
-        ),
+        scheme: 'https',
+        host: 'www.youtube.com',
+        path: '',
+      ),
     ),
   ];
   List<bool> _isSelectedList = List.generate(3, (index) => false);
@@ -179,7 +179,8 @@ class _NewsDetailState extends State<NewsDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.news.title),
+        backgroundColor: Color(0xff7454E1),
+        title: Text('Oyun ve Uygulama Akademisi'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -233,7 +234,7 @@ class _NewsDetailState extends State<NewsDetail> {
             ],
           ),
         ),
-      ), 
+      ),
     );
   }
 }

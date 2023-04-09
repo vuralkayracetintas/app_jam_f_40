@@ -187,7 +187,7 @@ class _NewsDetailState extends State<NewsDetail> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff7454e1),
-        title: Text('Unity Etkinlikler'),
+        title: Text('Oyun ve Uygulama Akademisi'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

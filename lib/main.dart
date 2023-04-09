@@ -21,18 +21,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//todo fab iconlari degisecek web adresine gidecekse web view veya url laucnher kutuphanesi kurulacak entegre edicek
-//todo flutter duyurular aciklama sayfasi 
 //todo flutter etkinlik sayfasinin acilamalari olsun.
 
-
-
-
-
-//todo unity etkinlik centik kaldir (tamamlandi)
-//todo unity duyurular aciklama sayfasi (tamamlandi)
 //todo unity etkinlik sayfasinin acilamalari olsun.
-
-
 
 //todo mentor sayfasi
