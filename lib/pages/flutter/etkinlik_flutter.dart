@@ -172,7 +172,6 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AnimatedOpacity(
                 opacity: opacityLevel,
