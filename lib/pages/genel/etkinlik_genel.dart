@@ -43,6 +43,14 @@ class _EtkinlikGenelPageState extends State<EtkinlikGenelPage> {
     ),
   ];
   List<bool> _isSelectedList = List.generate(3, (index) => false);
+     final searchController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    searchController.addListener(() {
+      setState(() {});
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,49 +58,77 @@ class _EtkinlikGenelPageState extends State<EtkinlikGenelPage> {
         children: newsList.asMap().entries.map((entry) {
           int index = entry.key;
           News news = entry.value;
-          return Container(
-            margin:
-                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: control.checkbool.value[index]
-                  ? Color(0xff7454e1)
-                  : const Color(0XFFEFB304),
-              borderRadius: BorderRadius.circular(10.0),
-              border: Border.all(color: Colors.grey),
-            ),
-            child: ListTile(
-              leading: Checkbox(
-                  onChanged: (bool? value) {
-                    setState(() {
-                      //
-                      control.checkbool[index] = value!;
-                      //_isSelectedList[index] = value ?? false;
-                    });
-                  },
-                  value: control.checkbool.value[index]
-
-                  //_isSelectedList[index],
+          return Column(
+            children: [Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 20.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    prefixIconColor: Color(0xff7454e1),
+                    contentPadding: EdgeInsets.symmetric(vertical: 10.0),
+                    suffixIconColor: Color(0xff7454e1),
+                    prefixIcon: const Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    labelText: 'Etkinlik Ara',
+                    suffixIcon: searchController.text.isEmpty
+                        ? Container(width: 0)
+                        : IconButton(
+                            icon: const Icon(Icons.close),
+                            onPressed: () {
+                              searchController.clear();
+                            },
+                          ),
                   ),
-              // title: Text(news.title),
-              // subtitle: Text(news.description),
-              // trailing: Text(
-              //   DateFormat.yMd().add_Hms().format(news.publishedAt),
-              // ),
-              title: Text(news.title),
-              subtitle: Text(
-                DateFormat.yMd().add_Hms().format(news.publishedAt),
+                  controller: searchController,
+                ),
               ),
+              Container(
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                padding: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  color: control.checkbool.value[index]
+                      ? Color(0xff7454e1)
+                      : const Color(0XFFEFB304),
+                  borderRadius: BorderRadius.circular(10.0),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: ListTile(
+                  leading: Checkbox(
+                      onChanged: (bool? value) {
+                        setState(() {
+                          //
+                          control.checkbool[index] = value!;
+                          //_isSelectedList[index] = value ?? false;
+                        });
+                      },
+                      value: control.checkbool.value[index]
 
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => EtliklikDetailsPage(news: news),
+                      //_isSelectedList[index],
+                      ),
+                  // title: Text(news.title),
+                  // subtitle: Text(news.description),
+                  // trailing: Text(
+                  //   DateFormat.yMd().add_Hms().format(news.publishedAt),
+                  // ),
+                  title: Text(news.title),
+                  subtitle: Text(
+                    DateFormat.yMd().add_Hms().format(news.publishedAt),
                   ),
-                );
-              },
-            ),
+
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EtliklikDetailsPage(news: news),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           );
         }).toList(),
       ),
