@@ -1,4 +1,4 @@
-# jam_app
+# Oyun ve Uygulama Akademisi App Jam Uygulaması
 
 Oyun ve Uygulama Akademisi AppJam F-40 takimi projesidir.
 
