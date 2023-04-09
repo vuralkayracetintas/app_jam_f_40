@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -33,6 +35,7 @@ class CheckEtklikContoroller extends GetxController {
 
 class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
   final CheckEtklikContoroller control = Get.put(CheckEtklikContoroller());
+
   final List<News> newsList = [
     News(
       title: 'Flutter AppJam Eklinligi',
@@ -68,9 +71,10 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
                           vertical: 10.0, horizontal: 20.0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                          prefixIconColor: Color(0xff7454e1),
-                          contentPadding: EdgeInsets.symmetric(vertical: 10.0),
-                          suffixIconColor: Color(0xff7454e1),
+                          prefixIconColor: const Color(0xff7454e1),
+                          contentPadding:
+                              const EdgeInsets.symmetric(vertical: 10.0),
+                          suffixIconColor: const Color(0xff7454e1),
                           prefixIcon: const Icon(Icons.search),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(50.0),
@@ -94,7 +98,7 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
                       padding: const EdgeInsets.all(10.0),
                       decoration: BoxDecoration(
                         color: control.checkbool.value[index]
-                            ? Color(0XFFEFB304)
+                            ? const Color(0XFFEFB304)
                             : const Color(0xff7454e1),
                         borderRadius: BorderRadius.circular(10.0),
                         border: Border.all(color: Colors.grey),
@@ -146,8 +150,19 @@ class EtliklikDetailsPage extends StatefulWidget {
   State<EtliklikDetailsPage> createState() => _EtliklikDetailsPageState();
 }
 
+class RatingController extends GetxController {
+  double _rating = 0.0;
+  double get savedRating => _rating;
+
+  void updateRating(double rating) {
+    _rating = rating;
+  }
+}
+
 class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
   double opacityLevel = 0;
+
+  final durumController = TextEditingController();
 
   @override
   void initState() {
@@ -156,57 +171,167 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
       setState(() {
         opacityLevel = 1;
       });
+      durumController.addListener(() {
+        setState(() {});
+      });
     });
+  }
+
+  void _showAlertDialog(BuildContext context) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        title: const Text('Tesekkurler'),
+        content: const Text(
+            ' Yorumun ve degerlendirmen kaydedildi Baska etkinliklerde gorusmek uzere'),
+        actions: <CupertinoDialogAction>[
+          CupertinoDialogAction(
+            isDestructiveAction: true,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text(
+              'Tamam',
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(color: Colors.red),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    /*  backgroundColor: Color.fromARGB(255, 255, 245, 153),*/ /*renk denemesi*/
+      /*  backgroundColor: Color.fromARGB(255, 255, 245, 153),*/ /*renk denemesi*/
       appBar: AppBar(
-        backgroundColor: Color(0xff7454e1),
-        title: Text('Oyun ve Uygulama Akademisi'),
+        backgroundColor: const Color(0xff7454e1),
+        title: const Text('Oyun ve Uygulama Akademisi'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Center(
+        child: AnimatedOpacity(
+          opacity: opacityLevel,
+          duration: const Duration(milliseconds: 1000),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AnimatedOpacity(
-                opacity: opacityLevel,
-                duration: const Duration(milliseconds: 1000),
-                child: Column(
-                  children: [
-                    Text(
-                      widget.news.title,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const SizedBox(height: 8.0),
-                    Text(
-                      widget.news.description,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    const SizedBox(height: 8.0),
-                    Text(
-                      DateFormat.yMd()
-                          .add_Hms()
-                          .format(widget.news.publishedAt),
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff7454e1),
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        'Gitmek icin tıklayınız',
-                      ),
-                    )
-                  ],
+              Text(
+                widget.news.title,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(height: 8.0),
+              Text(
+                widget.news.description,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+              const SizedBox(height: 8.0),
+              Text(
+                DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xff7454e1),
+                ),
+                onPressed: () {},
+                child: const Text(
+                  'Gitmek icin tıklayınız',
                 ),
               ),
+              Spacer(),
+              const Padding(
+                padding: EdgeInsets.only(
+                  top: 50.0,
+                  bottom: 10,
+                ),
+                child: Text('Etkinlikten Memnun Kaldiniz Mi ?'),
+              ),
+              RatingBar.builder(
+                initialRating: 1,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                itemBuilder: (context, _) => const Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                ),
+                onRatingUpdate: (rating) {
+                  Get.put(RatingController());
+                  Get.find<RatingController>().updateRating(rating);
+                },
+              ),
+              const SizedBox(height: 16),
+              const SizedBox(height: 30),
+              TextFormField(
+                decoration: InputDecoration(
+                  prefixIconColor: Colors.deepPurpleAccent,
+                  suffixIconColor: Colors.deepPurpleAccent,
+                  prefixIcon: const Icon(Icons.mail_outline),
+                  border: const OutlineInputBorder(),
+                  labelText: 'Neden Bu Puani verdin ?',
+                  hintText: 'E-Mail Adresinizi Giriniz',
+                  suffixIcon: durumController.text.isEmpty
+                      ? Container(width: 0)
+                      : IconButton(
+                          icon: const Icon(Icons.close),
+                          onPressed: () {
+                            durumController.clear();
+                          },
+                        ),
+                ),
+                controller: durumController,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    minimumSize:
+                        Size(MediaQuery.of(context).size.width * 0.7, 40)),
+                onPressed: () {
+                  final rating = Get.find<RatingController>()._rating;
+                  final text = durumController.text;
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => CupertinoAlertDialog(
+                      title: const Text('Tesekkurler'),
+                      content: Column(
+                        children: [
+                          Text('Puanin : $rating'),
+                          Text('Yorumun : $text'),
+                          const Text(
+                              'Puanin ve yorumun kaydedildi.Gelecek etkinliklerde gorusmek uzere')
+                        ],
+                      ),
+                      actions: <CupertinoDialogAction>[
+                        CupertinoDialogAction(
+                          isDestructiveAction: true,
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            'Tamam',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(color: Colors.red),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                child: const Text(
+                  'Gonder',
+                ),
+              ),
+              SizedBox(
+                height: 50,
+              )
             ],
           ),
         ),
