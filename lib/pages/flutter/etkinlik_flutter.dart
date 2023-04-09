@@ -215,102 +215,109 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
         backgroundColor: const Color(0xff7454e1),
         title: const Text('Oyun ve Uygulama Akademisi'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: AnimatedOpacity(
-          opacity: opacityLevel,
-          duration: const Duration(milliseconds: 1000),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                widget.news.title,
-                style: Theme.of(context).textTheme.titleLarge,
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.8,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: AnimatedOpacity(
+              opacity: opacityLevel,
+              duration: const Duration(milliseconds: 1000),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    widget.news.title,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(height: 8.0),
+                  Text(
+                    widget.news.description,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  const SizedBox(height: 8.0),
+                  Text(
+                    DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xff7454e1),
+                    ),
+                    onPressed: () {},
+                    child: const Text(
+                      'Gitmek icin tıklayınız',
+                    ),
+                  ),
+                  Spacer(),
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      top: 50.0,
+                      bottom: 10,
+                    ),
+                    child: Text('Etkinlikten Memnun Kaldiniz Mi ?'),
+                  ),
+                  RatingBar.builder(
+                    initialRating: 1,
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    itemBuilder: (context, _) => const Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                    ),
+                    onRatingUpdate: (rating) {
+                      Get.put(RatingController());
+                      Get.find<RatingController>().updateRating(rating);
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  const SizedBox(height: 30),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      prefixIconColor: Colors.deepPurpleAccent,
+                      suffixIconColor: Colors.deepPurpleAccent,
+                      prefixIcon: const Icon(Icons.mail_outline),
+                      border: const OutlineInputBorder(),
+                      labelText: 'Neden Bu Puani verdin ?',
+                      hintText: 'Kisa bir cumle ile aciklayiniz',
+                      suffixIcon: durumController.text.isEmpty
+                          ? Container(width: 0)
+                          : IconButton(
+                              icon: const Icon(Icons.close),
+                              onPressed: () {
+                                durumController.clear();
+                              },
+                            ),
+                    ),
+                    controller: durumController,
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff7454e1),
+                        minimumSize:
+                            Size(MediaQuery.of(context).size.width * 0.7, 40)),
+                    onPressed: () {
+                      final rating = Get.find<RatingController>()._rating;
+                      final text = durumController.text;
+                      customMyDialog(context, rating, text);
+                      durumController.clear();
+                    },
+                    child: const Text(
+                      'Gonder',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  )
+                ],
               ),
-              const SizedBox(height: 8.0),
-              Text(
-                widget.news.description,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-              const SizedBox(height: 8.0),
-              Text(
-                DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff7454e1),
-                ),
-                onPressed: () {},
-                child: const Text(
-                  'Gitmek icin tıklayınız',
-                ),
-              ),
-              Spacer(),
-              const Padding(
-                padding: EdgeInsets.only(
-                  top: 50.0,
-                  bottom: 10,
-                ),
-                child: Text('Etkinlikten Memnun Kaldiniz Mi ?'),
-              ),
-              RatingBar.builder(
-                initialRating: 1,
-                minRating: 1,
-                direction: Axis.horizontal,
-                allowHalfRating: true,
-                itemCount: 5,
-                itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                itemBuilder: (context, _) => const Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                ),
-                onRatingUpdate: (rating) {
-                  Get.put(RatingController());
-                  Get.find<RatingController>().updateRating(rating);
-                },
-              ),
-              const SizedBox(height: 16),
-              const SizedBox(height: 30),
-              TextFormField(
-                decoration: InputDecoration(
-                  prefixIconColor: Colors.deepPurpleAccent,
-                  suffixIconColor: Colors.deepPurpleAccent,
-                  prefixIcon: const Icon(Icons.mail_outline),
-                  border: const OutlineInputBorder(),
-                  labelText: 'Neden Bu Puani verdin ?',
-                  hintText: 'Kisa bir cumle ile aciklayiniz',
-                  suffixIcon: durumController.text.isEmpty
-                      ? Container(width: 0)
-                      : IconButton(
-                          icon: const Icon(Icons.close),
-                          onPressed: () {
-                            durumController.clear();
-                          },
-                        ),
-                ),
-                controller: durumController,
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xff7454e1),
-                    minimumSize:
-                        Size(MediaQuery.of(context).size.width * 0.7, 40)),
-                onPressed: () {
-                  final rating = Get.find<RatingController>()._rating;
-                  final text = durumController.text;
-                  customMyDialog(context, rating, text);
-                  durumController.clear();
-                },
-                child: const Text(
-                  'Gonder',
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              )
-            ],
+            ),
           ),
         ),
       ),
