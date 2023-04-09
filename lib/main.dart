@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: const SplachScreen(),
+      home: const Ana_sayfa(),
     );
   }
 }
