@@ -99,6 +99,7 @@ class _DuyuruFlutterState extends State<DuyuruFlutter> {
         path: '',
       ),
     ),
+    
   ];
   List<bool> _isSelectedList = List.generate(3, (index) => false);
   @override
