@@ -41,25 +41,18 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
 
   final List<News> newsList = [
     News(
-      title: 'Flutter AppJam Eklinligi',
-      description: 'Jam\'e katildiysan bu etkiligi kacirma',
+      title: 'Flutter AppJam Etkinliği',
+      description: 'Jam\'e katıldıysan bu etkiliği kaçirma',
       publishedAt: DateTime.parse('2023-04-01 21:00'),
       etkinlikIcerigi:
           'Game & App Jam App Jam açılışı ile başlıyor. Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un katılımıyla gerçekleştireceğimiz etkinlikte App Jam temasını ve App Jam’e dair süreç detaylarını konuşacağız.Katilimlarinizi bekliyoruz.',
     ),
     News(
-      title: 'Flutter Soru Eklinligi',
-      description: 'Jam\'e katildiysan bu etkiligi kacirma',
+      title: 'Flutter Soru - Cevap Etkinliği',
+      description: 'Jam hakkındak aklına takılanları sorabılırsın',
       publishedAt: DateTime.parse('2023-04-01 21:00'),
       etkinlikIcerigi:
-          'Game & App Jam App Jam açılışı ile başlıyor. Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un katılımıyla gerçekleştireceğimiz etkinlikte App Jam temasını ve App Jam’e dair süreç detaylarını konuşacağız',
-    ),
-    News(
-      title: 'Deneme Eklinligi',
-      description: 'Jam\'e katildiysan bu etkiligi kacirma',
-      publishedAt: DateTime.parse('2023-04-01 21:00'),
-      etkinlikIcerigi:
-          'Game & App Jam App Jam açılışı ile başlıyor. Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un katılımıyla gerçekleştireceğimiz etkinlikte App Jam temasını ve App Jam’e dair süreç detaylarını konuşacağız',
+          'Jam App ile ilgili sorularınızı Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un cevaplıyor. Soru tahtasına sorularınızı eklemeyi unutmayınız ',
     ),
   ];
 

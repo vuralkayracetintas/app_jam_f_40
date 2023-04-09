@@ -1,34 +1,33 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 import 'package:flutter/material.dart';
+import 'package:jam_app/firebase_options.dart';
 import 'package:jam_app/pages/ana_sayfa.dart';
-import 'package:jam_app/pages/home_page.dart';
+import 'package:jam_app/pages/service/firebase_notification_service.dart';
+import 'package:jam_app/pages/service/local_notification_service.dart';
 import 'package:jam_app/pages/splash_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  FirebaseMessaging.onBackgroundMessage(
+      FirebaseNotificationService.backgroundMessage);
+  LocalNotificationServices.initialize();
+  //FirebaseMessaging.instance.getInitialMessage();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  bool _isDarkModeEnabled = false;
-
-  void toggleTheme() {
-    setState(() {
-      _isDarkModeEnabled = !_isDarkModeEnabled;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.purple),
-      home: const Ana_sayfa(),
+      home: const SplachScreen(),
     );
   }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "503591921647",
+    "project_id": "jamapp-2d2b8",
+    "storage_bucket": "jamapp-2d2b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503591921647:android:a37ca094b753ec0f1ab81a",
+        "android_client_info": {
+          "package_name": "com.example.jam_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503591921647-ajmcgmnvi183j5vku3p49o946u97cb12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlUQK9cP8gmgvCrtc33acSsFysRrV9ULg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503591921647-ajmcgmnvi183j5vku3p49o946u97cb12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

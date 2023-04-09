@@ -44,7 +44,7 @@ class _EtkinlikUnityPageState extends State<EtkinlikUnityPage> {
       description: 'Jam\'e katildiysan buraya gelmelisin',
       publishedAt: DateTime.parse('2022-04-01 12:34:56'),
       etkinlikIcerigi:
-          'Game & App Jam App Jam açılışı ile başlıyor. Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un katılımıyla gerçekleştireceğimiz etkinlikte App Jam temasını ve App Jam’e dair süreç detaylarını konuşacağız.Katilimlarinizi bekliyoruz.',
+          'Game Jam açılışı var! Danışmanımız Atıl Samancıoğlu ve Unity Eğitmenimiz Tolgay Hıçkıran’ın katılımıyla gerçekleştireceğimiz etkinlikte Game Jam temasını ve Game Jam’e dair süreç detaylarını konuşacağız',
     ),
   ];
   List<bool> _isSelectedList = List.generate(3, (index) => false);

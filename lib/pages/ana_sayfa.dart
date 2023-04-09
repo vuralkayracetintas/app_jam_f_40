@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jam_app/pages/package/use_url.dart';
+import 'package:jam_app/pages/service/firebase_notification_service.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_flutter.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_genel.dart';
 import 'package:jam_app/pages/tabbar/custom_tabbar_unity.dart';
@@ -20,6 +22,17 @@ class _Ana_sayfaState extends State<Ana_sayfa> {
     setState(() {
       isDarkModeEnabled = !isDarkModeEnabled;
     });
+  }
+
+  final service = FirebaseNotificationService();
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  @override
+  void initState() {
+    super.initState();
+
+    service.connectionNotification();
   }
 
   @override
