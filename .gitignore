@@ -36,7 +36,8 @@ firebase_options.dart
 
 #Firebase
 ios/firebase_app_id_file.json
-
+ios/Runner/GoogleService-Info.plist
+android/app/google-services.json
 
 # Symbolication related
 app.*.symbols
