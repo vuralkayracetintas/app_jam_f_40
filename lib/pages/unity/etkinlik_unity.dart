@@ -100,7 +100,11 @@ class _EtkinlikUnityPageState extends State<EtkinlikUnityPage> {
                             ? Color(0XFFEFB304)
                             : const Color(0xff7454e1),
                         borderRadius: BorderRadius.circular(10.0),
-                        border: Border.all(color: Colors.grey),
+                        border: Border.all(
+                            color: control.checkbool.value[index]
+                                ? const Color(0xff7454E1)
+                                : const Color(0XFFEFB304),
+                            width: 2),
                       ),
                       child: ListTile(
                         title: Text(newsList[index].title),
