@@ -162,7 +162,7 @@ class _Ana_sayfaState extends State<Ana_sayfa> {
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 19),
+                          fontSize: 25),
                       textAlign: TextAlign.center,
                     ),
                   ),
