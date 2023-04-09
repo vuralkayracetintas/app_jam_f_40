@@ -241,52 +241,48 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Column(
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 3,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              alignment: Alignment.center,
-                              height: 50,
-                              child: Text(
-                                widget.news.title,
-                                style: Theme.of(context).textTheme.titleLarge,
-                                textAlign: TextAlign.center,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                              ),
-                            ),
+                      Expanded(
+                        flex: 3,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                          const SizedBox(
-                            width: 10,
+                          alignment: Alignment.center,
+                          height: 50,
+                          child: Text(
+                            widget.news.title,
+                            style: Theme.of(context).textTheme.titleLarge,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
                           ),
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              alignment: Alignment.center,
-                              padding: const EdgeInsets.all(10),
-                              child: Text(
-                                DateFormat.yMd()
-                                    .add_Hm()
-                                    .format(widget.news.publishedAt),
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(color: Colors.black),
-                              ),
-                            ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                        ],
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(10),
+                          child: Text(
+                            DateFormat.yMd()
+                                .add_Hm()
+                                .format(widget.news.publishedAt),
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(color: Colors.black),
+                          ),
+                        ),
                       ),
                     ],
                   ),

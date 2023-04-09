@@ -9,11 +9,13 @@ class News {
   final String title;
   final String description;
   final DateTime publishedAt;
+  final String etkinlikIcerigi;
 
   News(
       {required this.title,
       required this.description,
-      required this.publishedAt});
+      required this.publishedAt,
+      required this.etkinlikIcerigi});
 }
 
 class EtkinlikUnityPage extends StatefulWidget {
@@ -41,6 +43,8 @@ class _EtkinlikUnityPageState extends State<EtkinlikUnityPage> {
       title: 'Unity GameJam Eklinligi',
       description: 'Jam\'e katildiysan buraya gelmelisin',
       publishedAt: DateTime.parse('2022-04-01 12:34:56'),
+      etkinlikIcerigi:
+          'Game & App Jam App Jam açılışı ile başlıyor. Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un katılımıyla gerçekleştireceğimiz etkinlikte App Jam temasını ve App Jam’e dair süreç detaylarını konuşacağız.Katilimlarinizi bekliyoruz.',
     ),
   ];
   List<bool> _isSelectedList = List.generate(3, (index) => false);
@@ -219,9 +223,50 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
               duration: const Duration(milliseconds: 1000),
               child: Column(
                 children: [
-                  Text(
-                    widget.news.title,
-                    style: Theme.of(context).textTheme.titleLarge,
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          alignment: Alignment.center,
+                          height: 50,
+                          child: Text(
+                            widget.news.title,
+                            style: Theme.of(context).textTheme.titleLarge,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(10),
+                          child: Text(
+                            DateFormat.yMd()
+                                .add_Hm()
+                                .format(widget.news.publishedAt),
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 8.0),
                   Text(
@@ -229,9 +274,13 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   const SizedBox(height: 8.0),
-                  Text(
-                    DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
-                    style: Theme.of(context).textTheme.bodySmall,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 10),
+                    child: Text(
+                      widget.news.etkinlikIcerigi,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 20),
+                    ),
                   ),
                   const Padding(
                     padding: EdgeInsets.only(
@@ -241,7 +290,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     child: Text('Etkinlikten Memnun Kaldiniz Mi ?'),
                   ),
                   RatingBar.builder(
-                    initialRating: 1,
+                    initialRating: 0,
                     minRating: 1,
                     direction: Axis.horizontal,
                     allowHalfRating: true,
