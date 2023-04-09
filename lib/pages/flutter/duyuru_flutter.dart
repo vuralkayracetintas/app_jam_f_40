@@ -122,7 +122,7 @@ class _DuyuruFlutterState extends State<DuyuruFlutter> {
                         ? Color(0XFFEFB304)
                         : const Color(0xff7454e1),
                     borderRadius: BorderRadius.circular(10.0),
-                    border: Border.all(color: Colors.grey),
+                    border: Border.all(color: Colors.yellow, width: 2),
                   ),
                   child: ListTile(
                     title: Text(newsList[index].title),

@@ -42,7 +42,7 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
   final List<News> newsList = [
     News(
       title: 'Flutter AppJam Eklinligi',
-      description: 'Jam\'e katildiysan buraya gelmelisin',
+      description: 'Jam\'e katildiysan bu etkiligi kacirma',
       publishedAt: DateTime.parse('2023-04-01 21:00'),
       etkinlikIcerigi:
           'Game & App Jam App Jam açılışı ile başlıyor. Danışmanımız Atıl Samancıoğlu ve Flutter Eğitmenimiz Sercan Yusuf’un katılımıyla gerçekleştireceğimiz etkinlikte App Jam temasını ve App Jam’e dair süreç detaylarını konuşacağız',
@@ -104,9 +104,13 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
                       decoration: BoxDecoration(
                         color: control.checkbool.value[index]
                             ? const Color(0XFFEFB304)
-                            : const Color(0xff7454e1),
+                            : const Color(0xff7454E1),
                         borderRadius: BorderRadius.circular(10.0),
-                        border: Border.all(color: Colors.grey),
+                        border: Border.all(
+                            color: control.checkbool.value[index]
+                                ? const Color(0xff7454E1)
+                                : const Color(0XFFEFB304),
+                            width: 2),
                       ),
                       child: ListTile(
                         title: Text(newsList[index].title),
@@ -193,7 +197,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.8,
+            maxHeight: MediaQuery.of(context).size.height,
           ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -203,9 +207,54 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    widget.news.title,
-                    style: Theme.of(context).textTheme.titleLarge,
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              alignment: Alignment.center,
+                              height: 50,
+                              child: Text(
+                                widget.news.title,
+                                style: Theme.of(context).textTheme.titleLarge,
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 3,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.all(10),
+                              child: Text(
+                                DateFormat.yMd()
+                                    .add_Hm()
+                                    .format(widget.news.publishedAt),
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.copyWith(color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 8.0),
                   Text(
@@ -213,24 +262,26 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   const SizedBox(height: 8.0),
-                  Text(
-                    DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
+                  // Text(
+                  //   DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
+                  //   style: Theme.of(context).textTheme.bodySmall,
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0, bottom: 10),
                     child: Text(
                       widget.news.etkinlikIcerigi,
                       textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20),
                     ),
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff7454e1),
-                    ),
+                        backgroundColor: const Color(0xff7454e1),
+                        minimumSize:
+                            Size(MediaQuery.of(context).size.width * 0.7, 40)),
                     onPressed: () {},
                     child: const Text(
-                      'Gitmek icin tıklayınız',
+                      'Etkinlige Katil',
                     ),
                   ),
                   Spacer(),
@@ -263,8 +314,9 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     decoration: InputDecoration(
                       prefixIconColor: Colors.deepPurpleAccent,
                       suffixIconColor: Colors.deepPurpleAccent,
-                      prefixIcon: const Icon(Icons.mail_outline),
-                      border: const OutlineInputBorder(),
+                      prefixIcon: const Icon(Icons.message),
+                      border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xff7454E1))),
                       labelText: 'Neden Bu Puani verdin ?',
                       hintText: 'Kisa bir cumle ile aciklayiniz',
                       suffixIcon: durumController.text.isEmpty

@@ -32,30 +32,32 @@ class _Ana_sayfaState extends State<Ana_sayfa> {
             height: MediaQuery.of(context).size.height * 0.2,
             width: MediaQuery.of(context).size.width,
             color: const Color(0xff9A82E9),
-            child: Align(
-              alignment: Alignment.center,
-              child: Row(
-                children: [
-                  const Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 40.0),
-                      child: Text(
-                        "OYUN VE UYGULAMA \n AKADEMİSİ'NE \nHOŞ GELDİN!",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 10, top: 40.0),
+                    child: Text(
+                      "OYUN VE UYGULAMA \n AKADEMİSİ'NE \nHOŞ GELDİN!",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
                     ),
                   ),
-                  Image.asset(
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Image.asset(
                     "assets/images/login.png",
                     fit: BoxFit.cover,
                     height: 200,
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
           const Spacer(),
