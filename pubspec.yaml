@@ -44,6 +44,7 @@ dependencies:
   flutter_speed_dial: ^6.2.0
   font_awesome_flutter: ^10.4.0
   flutter_rating_bar: ^4.0.1
+  flutter_svg: ^2.0.4
 
   
 
