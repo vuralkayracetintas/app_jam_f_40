@@ -37,7 +37,7 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
     News(
       title: 'Flutter AppJam Eklinligi',
       description: 'Jam\'e katildiysan buraya gelmelisin',
-      publishedAt: DateTime.parse('2022-04-01 12:34:56'),
+      publishedAt: DateTime.parse('2023-04-01 12:34:56'),
     ),
   ];
   List<bool> _isSelectedList = List.generate(3, (index) => false);
