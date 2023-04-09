@@ -15,7 +15,7 @@ class _CustomTabBarUnityState extends State<CustomTabBarUnity>
   late TabController _tabController;
   TabBar get _tabBar => TabBar(
         controller: _tabController,
-        indicatorColor: Color(0xff7454e1),
+        indicatorColor: Colors.deepPurpleAccent,
         labelColor: Colors.black,
         tabs: const <Widget>[
           Tab(

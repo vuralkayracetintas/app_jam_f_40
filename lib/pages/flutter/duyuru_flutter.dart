@@ -101,55 +101,48 @@ class _DuyuruFlutterState extends State<DuyuruFlutter> {
     ),
   ];
   List<bool> _isSelectedList = List.generate(3, (index) => false);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: newsList.asMap().entries.map((entry) {
-          int index = entry.key;
-          News news = entry.value;
-          return Container(
-            margin:
-                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: control.checkbool.value[index]
-                  ? Color(0xff7454e1)
-                  : const Color(0XFFEFB304),
-              borderRadius: BorderRadius.circular(10.0),
-              border: Border.all(color: Colors.grey),
-            ),
-            child: ListTile(
-              // leading: Checkbox(
-              //     onChanged: (bool? value) {
-              //       setState(() {
-              //         //
-              //         control.checkbool[index] = value!;
-              //         //_isSelectedList[index] = value ?? false;
-              //       });
-              //     },
-              //     value: control.checkbool.value[index]
-
-              //     //_isSelectedList[index],
-              //     ),
-              title: Text(news.title),
-              subtitle: Text(news.description),
-              // trailing: Text(
-              //   DateFormat.yMd().add_Hms().format(news.publishedAt),
-              // ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => NewsDetail(news: news),
+        body: ListView.builder(
+            itemCount: newsList.length,
+            itemBuilder: (
+              BuildContext context,
+              int index,
+            ) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 20.0),
+                  padding: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color: control.checkbool.value[index]
+                        ? Color(0xff7454e1)
+                        : const Color(0XFFEFB304),
+                    borderRadius: BorderRadius.circular(10.0),
+                    border: Border.all(color: Colors.grey),
                   ),
-                );
-              },
-            ),
-          );
-        }).toList(),
-      ),
-    );
+                  child: ListTile(
+                    title: Text(newsList[index].title),
+                    subtitle: Text(newsList[index].description),
+                    // trailing: Text(
+                    //   DateFormat.yMd().add_Hms().format(news.publishedAt),
+                    // ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              NewsDetail(news: newsList[index]),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              );
+            }));
   }
 }
 

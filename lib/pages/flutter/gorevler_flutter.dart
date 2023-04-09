@@ -68,51 +68,55 @@ class _NewsListState extends State<NewsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: newsList.asMap().entries.map((entry) {
-          int index = entry.key;
-          News news = entry.value;
-          return Container(
-            margin:
-                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: control._checkbool.value[index]
-                  ? const Color(0xff7454e1)
-                  : const Color(0XFFEFB304),
-              borderRadius: BorderRadius.circular(10.0),
-              border: Border.all(color: Colors.grey),
-            ),
-            child: ListTile(
-              leading: Checkbox(
-                  onChanged: (bool? value) {
-                    setState(() {
-                      //
-                      control._checkbool[index] = value!;
-                      //_isSelectedList[index] = value ?? false;
-                    });
-                  },
-                  value: control._checkbool.value[index]
-
-                  //_isSelectedList[index],
+      body: ListView.builder(
+          itemCount: newsList.length,
+          itemBuilder: (
+            BuildContext context,
+            int index,
+          ) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 20.0),
                   ),
-              title: Text(news.title),
-              //subtitle: Text(news.description),
-              // trailing: Text(
-              //   DateFormat.yMd().add_Hms().format(news.publishedAt),
-              // ),
-              // onTap: () {
-              //   Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => NewsDetail(news: news),
-              //     ),
-              //   );
-              // },
-            ),
-          );
-        }).toList(),
-      ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 20.0),
+                    padding: const EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      color: control._checkbool.value[index]
+                          ? Color(0xff7454e1)
+                          : const Color(0XFFEFB304),
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: ListTile(
+                      title: Text(newsList[index].title),
+
+                      // trailing: Text(
+                      //   DateFormat.yMd().add_Hms().format(news.publishedAt),
+                      // ),
+                      leading: Checkbox(
+                          onChanged: (bool? value) {
+                            setState(() {
+                              //
+                              control._checkbool[index] = value!;
+                              //_isSelectedList[index] = value ?? false;
+                            });
+                          },
+                          value: control._checkbool.value[index]
+
+                          //_isSelectedList[index],
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }),
     );
   }
 }
