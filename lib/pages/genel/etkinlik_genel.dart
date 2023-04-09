@@ -101,7 +101,11 @@ class _EtkinlikGenelPageState extends State<EtkinlikGenelPage> {
                       ? Color(0XFFEFB304)
                       : const Color(0xff7454e1),
                   borderRadius: BorderRadius.circular(10.0),
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(
+                      color: control.checkbool.value[index]
+                          ? const Color(0xff7454E1)
+                          : const Color(0XFFEFB304),
+                      width: 2),
                 ),
                 child: ListTile(
                   leading: Checkbox(
@@ -181,7 +185,8 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.news.title),
+        backgroundColor: const Color(0xff7454e1),
+        title: const Text('Oyun ve Uygulama Akademisi'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -196,6 +201,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                   Text(
                     widget.news.title,
                     style: Theme.of(context).textTheme.titleLarge,
+                    textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 8.0),
                   Text(
