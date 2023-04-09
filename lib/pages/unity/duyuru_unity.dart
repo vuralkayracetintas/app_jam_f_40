@@ -43,7 +43,7 @@ class _DuyuruUnityState extends State<DuyuruUnity> {
     News(
         title: 'Game Jam Soru Cevap Etkinligi',
         description: 'Icinde kalmasin sor gitsin',
-        publishedAt: DateTime.parse('2022-04-01 12:34:56'),
+        publishedAt: DateTime.parse('2023-04-01 12:34:56'),
         etkinlikIcerigi:
             'Merhabalar Unity Eğitmenimiz Tolgay Hıçkıran Game Jam’e dair sorularınızı yanıtlamak için sizleri bekliyo',
         etkinlikUrl: Uri(
@@ -232,7 +232,7 @@ class _NewsDetailState extends State<NewsDetail> {
                         launchInBrowser(widget.news.etkinlikUrl);
                       },
                       child: Text(
-                        'Etkinlige Gitmek Icin Tiklayini',
+                        'Gitmek icin tıklayınız',
                       ),
                     )
                   ],

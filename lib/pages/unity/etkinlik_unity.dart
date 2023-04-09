@@ -168,32 +168,46 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AnimatedOpacity(
-              opacity: opacityLevel,
-              duration: const Duration(milliseconds: 1000),
-              child: Column(
-                children: [
-                  Text(
-                    widget.news.title,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    widget.news.description,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AnimatedOpacity(
+                opacity: opacityLevel,
+                duration: const Duration(milliseconds: 1000),
+                child: Column(
+                  children: [
+                    Text(
+                      widget.news.title,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 8.0),
+                    Text(
+                      widget.news.description,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: 8.0),
+                    Text(
+                      DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff7454E1),
+                        ),
+                        onPressed: () {
+                          
+                        },
+                        child: Text(
+                          'Gitmek icin tıklayınız',
+                        ),
+                      )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

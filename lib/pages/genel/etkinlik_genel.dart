@@ -7,11 +7,13 @@ class News {
   final String title;
   final String description;
   final DateTime publishedAt;
+  final String etkinlikIcerigi;
 
   News(
       {required this.title,
       required this.description,
-      required this.publishedAt});
+      required this.publishedAt,
+      required this.etkinlikIcerigi,});
 }
 
 class EtkinlikGenelPage extends StatefulWidget {
@@ -37,13 +39,14 @@ class _EtkinlikGenelPageState extends State<EtkinlikGenelPage> {
   final List<News> newsList = [
     News(
       title:
-          'Merhabalar, YARIN 21.00\'da Girişimciler için Finans Soru Cevap Buluşmamız var Eğitmenimiz Serhat Yanık Girişimcilikte Finans\’a dair merak ettiklerinizi cevaplıyor olacak.',
+          'Girişimciler için Finans Soru Cevap Buluşması',
       description: 'Katılım zorunlu değil.',
-      publishedAt: DateTime.parse('2022-04-01 12:34:56'),
+      etkinlikIcerigi: 'Merhabalar, YARIN 21.00\'da Girişimciler için Finans Soru Cevap Buluşmamız var Eğitmenimiz Serhat Yanık Girişimcilikte Finans\’a dair merak ettiklerinizi cevaplıyor olacak.',
+      publishedAt: DateTime.parse('2023-04-01 12:34:56'),
     ),
   ];
   List<bool> _isSelectedList = List.generate(3, (index) => false);
-     final searchController = TextEditingController();
+  final searchController = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -51,6 +54,7 @@ class _EtkinlikGenelPageState extends State<EtkinlikGenelPage> {
       setState(() {});
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +63,8 @@ class _EtkinlikGenelPageState extends State<EtkinlikGenelPage> {
           int index = entry.key;
           News news = entry.value;
           return Column(
-            children: [Padding(
+            children: [
+              Padding(
                 padding: const EdgeInsets.symmetric(
                     vertical: 10.0, horizontal: 20.0),
                 child: TextFormField(
@@ -85,8 +90,8 @@ class _EtkinlikGenelPageState extends State<EtkinlikGenelPage> {
                 ),
               ),
               Container(
-                margin:
-                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                margin: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 20.0),
                 padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                   color: control.checkbool.value[index]
@@ -113,7 +118,10 @@ class _EtkinlikGenelPageState extends State<EtkinlikGenelPage> {
                   // trailing: Text(
                   //   DateFormat.yMd().add_Hms().format(news.publishedAt),
                   // ),
-                  title: Text(news.title),
+                  title: Text(
+                    news.title,
+                    
+                  ),
                   subtitle: Text(
                     DateFormat.yMd().add_Hms().format(news.publishedAt),
                   ),
@@ -164,36 +172,51 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.news.title),
+        title: Text("Oyun ve Uygulama Akademisi"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AnimatedOpacity(
-              opacity: opacityLevel,
-              duration: const Duration(milliseconds: 1000),
-              child: Column(
-                children: [
-                  Text(
-                    widget.news.title,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    widget.news.description,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    DateFormat.yMd().add_Hms().format(widget.news.publishedAt),
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AnimatedOpacity(
+                opacity: opacityLevel,
+                duration: const Duration(milliseconds: 1000),
+                child: Column(
+                  children: [
+                    Text(
+                      widget.news.etkinlikIcerigi,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 8.0),
+                    Text(
+                      widget.news.description,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: 8.0),
+                    Text(
+                      DateFormat.yMd()
+                          .add_Hms()
+                          .format(widget.news.publishedAt),
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff7454E1),
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        'Gitmek icin tıklayınız',
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

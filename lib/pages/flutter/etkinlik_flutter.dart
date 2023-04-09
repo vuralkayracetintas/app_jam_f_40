@@ -170,6 +170,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               AnimatedOpacity(
@@ -196,7 +197,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
                     ElevatedButton(
                       onPressed: () {},
                       child: Text(
-                        'etkinlige gitmek icin tiklayiniz',
+                        'Gitmek icin tıklayınız',
                       ),
                     )
                   ],

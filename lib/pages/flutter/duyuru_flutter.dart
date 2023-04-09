@@ -225,7 +225,7 @@ class _NewsDetailState extends State<NewsDetail> {
                         launchInBrowser(widget.news.etkinlikUrl);
                       },
                       child: Text(
-                        'Etkinlige Gitmek Icin Tiklayini',
+                        'Gitmek için tıklayınız',
                       ),
                     )
                   ],
