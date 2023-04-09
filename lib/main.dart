@@ -29,7 +29,10 @@ class MyApp extends StatelessWidget {
 
 
 
-//todo unity etkinlik centik kaldir 
-//todo unity duyurular aciklama sayfasi 
+//todo unity etkinlik centik kaldir (tamamlandi)
+//todo unity duyurular aciklama sayfasi (tamamlandi)
 //todo unity etkinlik sayfasinin acilamalari olsun.
+
+
+
 //todo mentor sayfasi

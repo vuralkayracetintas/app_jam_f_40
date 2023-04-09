@@ -15,7 +15,7 @@ class _CustomTabBarUnityState extends State<CustomTabBarUnity>
   late TabController _tabController;
   TabBar get _tabBar => TabBar(
         controller: _tabController,
-        indicatorColor: Colors.deepPurpleAccent,
+        indicatorColor: Color(0xff7454e1),
         labelColor: Colors.black,
         tabs: const <Widget>[
           Tab(
@@ -56,7 +56,7 @@ class _CustomTabBarUnityState extends State<CustomTabBarUnity>
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-              backgroundColor: Colors.deepPurple,
+              backgroundColor: Color(0xff7454e1),
               elevation: 10,
               toolbarHeight: 100,
               title: const Text(
