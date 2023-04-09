@@ -88,7 +88,7 @@ class _CustomTabbarUnityPageState extends State<CustomTabbarUnityPage>
               elevation: 10,
               toolbarHeight: 100,
               title: const Text(
-                'Oyun ve Uygulama Akademisi',
+                'Genel Duyurular',
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
               centerTitle: true,
