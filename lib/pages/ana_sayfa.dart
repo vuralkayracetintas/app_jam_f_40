@@ -61,7 +61,6 @@ class Ana_sayfa extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
-
                 children: [
                   const Padding(
                     padding: EdgeInsets.all(8.0),
@@ -73,7 +72,6 @@ class Ana_sayfa extends StatelessWidget {
                           fontSize: 25),
                     ),
                   ),
-                  
                   Padding(
                     padding: const EdgeInsets.all(11.0),
                     child: Image.asset(
@@ -114,7 +112,6 @@ class Ana_sayfa extends StatelessWidget {
                           fontSize: 25),
                     ),
                   ),
-                  
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image.asset(
@@ -156,7 +153,6 @@ class Ana_sayfa extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                 
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image.asset(

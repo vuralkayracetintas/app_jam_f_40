@@ -162,7 +162,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    /*  backgroundColor: Color.fromARGB(255, 255, 245, 153),*/
+    /*  backgroundColor: Color.fromARGB(255, 255, 245, 153),*/ /*renk denemesi*/
       appBar: AppBar(
         backgroundColor: Color(0xff7454e1),
         title: Text('Oyun ve Uygulama Akademisi'),
