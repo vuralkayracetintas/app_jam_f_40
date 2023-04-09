@@ -94,8 +94,8 @@ class _EtkinlikFlutterPageState extends State<EtkinlikFlutterPage> {
                       padding: const EdgeInsets.all(10.0),
                       decoration: BoxDecoration(
                         color: control.checkbool.value[index]
-                            ? Color(0xff7454e1)
-                            : const Color(0XFFEFB304),
+                            ? Color(0XFFEFB304)
+                            : const Color(0xff7454e1),
                         borderRadius: BorderRadius.circular(10.0),
                         border: Border.all(color: Colors.grey),
                       ),
@@ -162,6 +162,7 @@ class _EtliklikDetailsPageState extends State<EtliklikDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    /*  backgroundColor: Color.fromARGB(255, 255, 245, 153),*/
       appBar: AppBar(
         backgroundColor: Color(0xff7454e1),
         title: Text('Oyun ve Uygulama Akademisi'),

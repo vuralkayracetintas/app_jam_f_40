@@ -59,6 +59,9 @@ class Ana_sayfa extends StatelessWidget {
               height: 100,
               width: MediaQuery.of(context).size.width * 0.8,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+
                 children: [
                   const Padding(
                     padding: EdgeInsets.all(8.0),
@@ -70,14 +73,12 @@ class Ana_sayfa extends StatelessWidget {
                           fontSize: 25),
                     ),
                   ),
-                  const Spacer(),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(11.0),
-                      child: Image.asset(
-                        "assets/images/flutter.png",
-                        fit: BoxFit.cover,
-                      ),
+                  
+                  Padding(
+                    padding: const EdgeInsets.all(11.0),
+                    child: Image.asset(
+                      "assets/images/flutter.png",
+                      fit: BoxFit.cover,
                     ),
                   )
                 ],
@@ -100,6 +101,8 @@ class Ana_sayfa extends StatelessWidget {
               height: 100,
               width: MediaQuery.of(context).size.width * 0.8,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Padding(
                     padding: EdgeInsets.all(8.0),
@@ -111,7 +114,7 @@ class Ana_sayfa extends StatelessWidget {
                           fontSize: 25),
                     ),
                   ),
-                  const Spacer(),
+                  
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image.asset(
@@ -139,6 +142,8 @@ class Ana_sayfa extends StatelessWidget {
               height: 100,
               width: MediaQuery.of(context).size.width * 0.8,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Padding(
                     padding: EdgeInsets.all(8.0),
@@ -151,7 +156,7 @@ class Ana_sayfa extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  const Spacer(),
+                 
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image.asset(

@@ -95,8 +95,8 @@ class _EtkinlikUnityPageState extends State<EtkinlikUnityPage> {
                       padding: const EdgeInsets.all(10.0),
                       decoration: BoxDecoration(
                         color: control.checkbool.value[index]
-                            ? Color(0xff7454e1)
-                            : const Color(0XFFEFB304),
+                            ? Color(0XFFEFB304)
+                          : const Color(0xff7454e1),
                         borderRadius: BorderRadius.circular(10.0),
                         border: Border.all(color: Colors.grey),
                       ),
