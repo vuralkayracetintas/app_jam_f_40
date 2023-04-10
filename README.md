@@ -24,30 +24,33 @@ Bu yarışmaya katılmamıza ve bu uygulamayı geliştirmemiz için olanak sağl
 
 
 <div>
-  <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/1.png" width="400" height="800">
+<img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/1.png" width="400" height="800">
 <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/2.png" width="400" height="800">
-<img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/3.png" width="400" height="800">
-  </div>
+</div>
 <div>
-  <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/4.png" width="400" height="800">
+<img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/3.png" width="400" height="800">
+<img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/4.png" width="400" height="800">
+</div>
+<div>
 <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/5.png" width="400" height="800">
 <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/6.png" width="400" height="800">
-  </div>
+</div>
 <div>
-  <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/7.png" width="400" height="800">
+<img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/7.png" width="400" height="800">
 <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/8.png" width="400" height="800">
-<img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/9.png" width="400" height="800">
-  </div>
+</div>
 <div>
-  <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/10.png" width="400" height="800">
+<img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/9.png" width="400" height="800">
+<img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/10.png" width="400" height="800">
+</div>
+<div>
 <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/11.png" width="400" height="800">
 <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/12.png" width="400" height="800">
-  </div>
+</div>
 <div>
-  <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/13.png" width="400" height="800">
+<img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/13.png" width="400" height="800">
 <img src="https://raw.githubusercontent.com/vuralkayracetintas/app_jam_f_40/main/screenshot/14.png" width="400" height="800">
-
-  </div>
+</div>
 
 
 
