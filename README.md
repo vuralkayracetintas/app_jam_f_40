@@ -20,7 +20,8 @@ Bu yarışmaya katılmamıza ve bu uygulamayı geliştirmemiz için olanak sağl
   - [LinkedIn](https://www.linkedin.com/in/vural-kayra-cetintas/)
   - [Github](https://github.com/vuralkayracetintas)
 
-
+Bu uygulamayı yaparken hazırladığımız userflow şeması ve wireframe çizimlerimiz aşağıda verilmiştir. 
+<img width="6944" alt="F-40 Game App Jam Userflow" src="https://github.com/vuralkayracetintas/app_jam_f_40/assets/88984118/0e9acefa-cbb0-48e4-a05c-1e7ff556a000">
 
 
 <div>
